@@ -34,7 +34,16 @@ export class Main {
         radius: "25.0", 
         gradient: "0.3",
         opacity: "0.5"
-      }];
+      },
+      {
+        name: "Dotan",
+        lat: "25.0000",
+        long: "30.0000",
+        radius: "25.0", 
+        gradient: "0.3",
+        opacity: "0.5"
+      }
+      ];
       data2.forEach((obj: PestLocation) => {
         PestLocationCollection.insert(obj);
       });

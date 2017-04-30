@@ -12,6 +12,7 @@ export class DemoDataService {
   }
 
   public getData(): ObservableCursor<Demo> {
+    console.log(this.data);
     return this.data;
   }
 }
