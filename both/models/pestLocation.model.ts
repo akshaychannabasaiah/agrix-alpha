@@ -1,8 +1,8 @@
 export interface PestLocation {
   name: string;
-  lat: string;
-  long: string;
-  radius: string;
-  gradient: string;
-  opacity: string;
+  lat: number;
+  long: number;
+  radius: number;
+  gradient: number;
+  opacity: number;
 }

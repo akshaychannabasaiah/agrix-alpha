@@ -12,7 +12,6 @@ export class PestMapDataService {
   }
 
   public getData(): ObservableCursor<PestLocation> {
-    console.log(this.data);
     return this.data;
   }
 }

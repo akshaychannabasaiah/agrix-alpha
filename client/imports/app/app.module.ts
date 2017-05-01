@@ -5,7 +5,9 @@ import { DemoComponent } from "./demo/demo.component";
 import { DemoDataService } from "./demo/demo-data.service";
 import { PestMapComponent } from "./pestMap/pestMap.component";
 import { PestMapDataService } from "./pestMap/pestMap-data.service";
-
+import { FormsModule,  
+  ReactiveFormsModule  
+} from '@angular/forms';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { MapKey } from "../../../keys/keys";
  
@@ -28,6 +30,8 @@ import { MapKey } from "../../../keys/keys";
   // Modules
   imports: [
     BrowserModule,
+    FormsModule,          
+    ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: MapKey
     })
