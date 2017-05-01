@@ -28,13 +28,22 @@ export class Main {
 
     if (PestLocationCollection.find({}).cursor.count() === 0) {
       const data2: PestLocation[] = [{
-        name: "Dotan",
-        lat: "25.0000",
-        long: "30.0000",
-        radius: "25.0", 
-        gradient: "0.3",
-        opacity: "0.5"
-      }];
+        name: "test1",
+        lat: 60.0000,
+        long: 24.0000,
+        radius: 1000.0, 
+        gradient: 0.3,
+        opacity: 0.4
+      },
+      {
+        name: "test2",
+        lat: 60.0000,
+        long: 25.0000,
+        radius: 1000.0, 
+        gradient: 0.3,
+        opacity: 0.7
+      }
+      ];
       data2.forEach((obj: PestLocation) => {
         PestLocationCollection.insert(obj);
       });
