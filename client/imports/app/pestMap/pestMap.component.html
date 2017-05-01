@@ -1,29 +1,18 @@
-<h1>{{greeting}}</h1>
+<h1>Current Pest Map</h1>
+<div id="map">
+<h3 *ngIf="processing">Loading map....</h3>  
+
 <sebm-google-map *ngIf="!processing" [latitude]="centerLat" [longitude]="centerLong">
     <li *ngFor="let d of data | async">
     <sebm-google-map-circle [latitude]="d.lat" [longitude]="d.long" [radius]="50000" [fillColor]="black" [fillOpacity]="d.opacity"></sebm-google-map-circle>
     </li>
 </sebm-google-map>
+</div>
 
-<!--div id="add-pest">
 
-  <label>Pest name:</label>
-  <input id="name" name="name"/>
-  <label>Latitude:</label>
-  <input id="lat" name="lat"/>
-  <label>Longitude:</label>
-  <input id="long" name="long"/>
-  <button (click)="getCurrentLocation">Current location</button> 
-  <label>Radius(meters):</label>
-  <input id="rad" name="rad" />
-  <label>Severity(0.0 to 1.0):</label>
-  <input id="op" name="op"/>
-  <button (click)="addLocation()">Add pest data</button>
-
-</div-->
-
+<div id="pest-map-container">
 <div id="add-pest">  
-    <h2 class="add-pest-header">Report new pests:</h2>  
+    <h2 class="add-pest-header">Report new pests</h2>  
     <form #f="ngForm"  
           (ngSubmit)="addLocation(f.value)"  
           >
@@ -49,7 +38,7 @@
                placeholder="Longitude"  
                name="long" [(ngModel)]="formdata.long" required>  
       </div>
-      <button (click)="getCurrentLocation()">Set current location</button>
+      <button id="location" (click)="getCurrentLocation()">Set current location &#9881;</button>
 
       <div class="field">  
         <label for="rad">Radius(metres):</label>  
@@ -66,6 +55,8 @@
                name="op" [(ngModel)]="formdata.opacity" required>  
       </div>
  
-      <button type="submit">Report</button>  
+      <button id="submit" type="submit">Report</button>  
     </form>  
   </div>  
+  </div>
+  

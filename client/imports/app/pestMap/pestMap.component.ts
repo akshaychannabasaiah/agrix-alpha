@@ -36,6 +36,8 @@ export class PestMapComponent implements OnInit {
     this.data = this.pestMapDataService.getData().zone();
     this.data.subscribe((data) => {
         this.processing = false;
+        this.centerLat = data[0].lat;
+        this.centerLong = data[0].long;
     });
 }
 
