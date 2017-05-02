@@ -9,7 +9,7 @@ import { FormsModule,
   ReactiveFormsModule  
 } from '@angular/forms';
 import { AgmCoreModule } from 'angular2-google-maps/core';
-import { MapKey } from "../../../keys/keys";
+//import { MapKey } from "../../../keys/keys";
  
 @NgModule({
   // Components, Pipes, Directive
@@ -33,7 +33,7 @@ import { MapKey } from "../../../keys/keys";
     FormsModule,          
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
-      apiKey: MapKey
+      apiKey: webpack.constants.GoogleMapsKey
     })
   ],
   // Main Component
