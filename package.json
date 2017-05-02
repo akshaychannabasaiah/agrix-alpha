@@ -9,7 +9,7 @@
     "meteor:update": "meteor update --all-packages",
     "test": "meteor test --driver-package practicalmeteor:mocha",
     "test:ci": "meteor test --once --driver-package dispatch:mocha-phantomjs",
-    "postinstall": "bash scripts/postinstall.sh"
+    "postinstall": "node scripts/postinstall.js"
   },
   "devDependencies": {
     "@types/chai": "3.4.34",
