@@ -1,8 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import { Observable } from "rxjs";
 import { PestMapDataService } from "./pestMap-data.service";
-import { PestLocation } from "../../../../both/models/pestLocation.model";
-import {PestLocationCollection} from "../../../../both/collections/pestLocation.collection";
+import { PestLocation } from "../../../../../both/models/pestLocation.model";
+import {PestLocationCollection} from "../../../../../both/collections/pestLocation.collection";
 import template from "./pestMap.component.html";
 import style from "./pestMap.component.scss";
 
