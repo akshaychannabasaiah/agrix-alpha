@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
+import {Location} from '@angular/common';
 import template from "./top-bar.component.html";
 import style from "./top-bar.component.scss";
 
@@ -7,14 +8,13 @@ import style from "./top-bar.component.scss";
   template,
   styles: [ style ]
 })
-export class TopBarComponent implements OnInit {
+export class TopBarComponent {
   @Input() title: string;
-  @Input() linkBack: string;
-  constructor() {
-    
+  tite : string;
+  constructor(private _location: Location) {
   }
 
-  ngOnInit() {
-    
+  backpressed(){
+    this._location.back();
   }
 }

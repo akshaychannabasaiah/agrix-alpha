@@ -13,6 +13,7 @@ import style from "./pestMap.component.scss";
 })
 export class PestMapComponent implements OnInit {
   greeting: string;
+  compName: string;
   data: Observable<PestLocation[]>;
   centerLat = 0;
   centerLong = 0;
@@ -30,6 +31,7 @@ export class PestMapComponent implements OnInit {
   constructor(private pestMapDataService: PestMapDataService) {
     this.greeting = "Hello this is the pest map!";
     this.formdata = this.initdata;
+    this.compName = "Pest Map";
   }
 
   ngOnInit() {

@@ -64,7 +64,7 @@ const appRoutes: Routes = [
 */  ],
   // Entry Components
   entryComponents: [
-    HomeComponent
+    AppComponent
   ],
   // Providers
   providers: [

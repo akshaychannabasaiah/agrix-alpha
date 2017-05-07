@@ -14,16 +14,18 @@ export var MapKey = 'Google-map-api-key';
 
 Things to do -- 
 
-- Model definitions 
-pest
-pesticides - reviews - editable? 
-action
-fields
-pestSuggestions - also what do the three filters mean? 
-pestMap
-Newsfeed 
+- Model definitions   
+pest  
+pesticides - reviews - editable?   
+action  
+fields  
+pestSuggestions - also what do the three filters mean?   
+pestMap  
+Newsfeed   
+  
 
-
-Upload Plan - what do you do with the upload? 
-Manage my field - anything editable 
-Add new field ? 
+Upload Plan - what do you do with the upload?   
+Manage my field - anything editable   
+Add new field - Do we need this?     
+Add Icons to be used   
+Colors     

@@ -8,10 +8,11 @@ import style from "./home.component.scss";
   styles: [ style ]
 })
 export class HomeComponent implements OnInit {
-  
+  compName : string;
   constructor() {
+    this.compName = "Agrix Alpha";
   }
-
+    
   ngOnInit() {
   }
 }
