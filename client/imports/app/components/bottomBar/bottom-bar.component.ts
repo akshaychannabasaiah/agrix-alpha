@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import template from "./bottom-bar.component.html";
 import style from "./bottom-bar.component.scss";
 
@@ -7,11 +7,10 @@ import style from "./bottom-bar.component.scss";
   template,
   styles: [ style ]
 })
-export class BottomBarComponent implements OnInit {
+export class BottomBarComponent {
+  //@Input() chosen: string;
   
   constructor() {
-  }
 
-  ngOnInit() {
   }
 }
