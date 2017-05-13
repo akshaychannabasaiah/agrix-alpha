@@ -1,4 +1,6 @@
-<h1>Current Pest Map</h1>
+<top-bar [title]="compName"></top-bar>
+
+
 <div id="map">
 <h3 *ngIf="processing">Loading map....</h3>  
 
@@ -8,7 +10,6 @@
     </li>
 </sebm-google-map>
 </div>
-
 
 <div id="pest-map-container">
 <div id="add-pest">  
@@ -59,4 +60,6 @@
     </form>  
   </div>  
   </div>
+
+  <bottom-bar></bottom-bar>
   
