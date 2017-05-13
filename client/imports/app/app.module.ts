@@ -4,7 +4,7 @@ import { AppComponent } from "./app.component";
 import { DemoComponent } from "./components/demo/demo.component";
 import { DemoDataService } from "./components/demo/demo-data.service";
 import { PestMapComponent } from "./components/pestMap/pestMap.component";
-import { PestMapDataService } from "./components/pestMap/pestMap-data.service";
+import { PestMapDataService } from "./services/pestMap-data.service";
 import { FormsModule,  
   ReactiveFormsModule  
 } from '@angular/forms';

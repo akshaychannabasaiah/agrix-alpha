@@ -1,8 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import { Observable } from "rxjs";
-import { PestMapDataService } from "./pestMap-data.service";
+import { PestMapDataService } from "../../services/pestMap-data.service";
 import { PestLocation } from "../../../../../both/models/pestLocation.model";
-import {PestLocationCollection} from "../../../../../both/collections/pestLocation.collection";
+import { PestLocationCollection } from "../../../../../both/collections/pestLocation.collection";
 import template from "./pestMap.component.html";
 import style from "./pestMap.component.scss";
 
@@ -11,8 +11,8 @@ import style from "./pestMap.component.scss";
   template,
   styles: [ style ]
 })
+
 export class PestMapComponent implements OnInit {
-  greeting: string;
   compName: string;
   data: Observable<PestLocation[]>;
   centerLat = 0;
@@ -29,7 +29,6 @@ export class PestMapComponent implements OnInit {
   };
 
   constructor(private pestMapDataService: PestMapDataService) {
-    this.greeting = "Hello this is the pest map!";
     this.formdata = this.initdata;
     this.compName = "Pest Map";
   }
