@@ -1,15 +1,15 @@
 <top-bar [title]="compName"></top-bar>
 
-<a href="/pestmap">To the map!</a>
 
-<!-- div id="map">
+<div id="home">
+<div id="map">
 <h3 *ngIf="processing">Loading map....</h3>  
-< sebm-google-map *ngIf="!processing" [latitude]="centerLat" [longitude]="centerLong">
+<sebm-google-map *ngIf="!processing" [latitude]="centerLat" [longitude]="centerLong">
     <li *ngFor="let d of data | async">
-    <sebm-google-map-circle [latitude]="d.lat" [longitude]="d.long" [radius]="50000" [fillColor]="black" [fillOpacity]="d.opacity"></sebm-google-map-circle>
+    <sebm-google-map-marker [latitude]="d.lat" [longitude]="d.long" iconUrl="/images/weed_map.png" (markerClick)="clicked(1)"></sebm-google-map-marker> 
     </li>
 </sebm-google-map>
-</div -->
+</div>
 
 
 <bottom-bar></bottom-bar>

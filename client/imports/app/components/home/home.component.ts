@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 
 import { Observable } from "rxjs";
 import { PestMapDataService } from "../../services/pestMap-data.service";
@@ -15,6 +15,8 @@ import style from "./home.component.scss";
 })
 
 export class HomeComponent implements OnInit {
+   
+  
   compName: string;
   data: Observable<PestLocation[]>;
   centerLat = 0;
@@ -42,5 +44,9 @@ export class HomeComponent implements OnInit {
         this.centerLat = data[0].lat;
         this.centerLong = data[0].long;
     });
+  }
+
+  clicked(e){
+    console.log(e);
   }
 }

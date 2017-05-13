@@ -8,6 +8,8 @@ color: white;
 font-size: 20px;
 position: fixed;
 padding: 10px;
+padding-left: 0px;
+padding-right: 0px;
 display: flex;
 justify-content: space-between;
 flex-direction: row;
@@ -15,18 +17,31 @@ z-index: 999;
 
 
 a{
-  background-color: black;  
-  padding: 5px;
-  border-radius: 2px;
+  background-color: $secondary-color;  
+  padding: 10px;
+  padding-top: 20px;
+  width: 50px;
+  height: 50px;
+  font-size: 25px;
+  border-radius: 50%;
   text-decoration: none;
   align-self: center;
+  color: $font-color;
 }
+
 h3{
   align-self: center;
 }
 
 #help{
-  right: 20px;
+  right: -20px;
+  position: relative;
+  padding-right: 20px;
+}
+
+#back{
+  left:-20px;
+  padding-left: 20px;
   position: relative;
 }
 
