@@ -1,0 +1,72 @@
+@import '../../styles/colors';
+
+#signup{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+
+    #signup-img{
+        width: 30%;
+        margin: 20px;
+        align-self: center;
+    }
+
+    form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+        div{
+            padding: 2px;
+
+            input{
+                padding: 10px;
+                text-align: center;
+                border-radius: 3px;
+
+            }
+        }
+
+        #flipper{
+            display: flex;
+            flex-direction: row;
+            align-content: center;
+            justify-content: center;
+            margin: 20px;
+
+            label{
+                align-self: center;
+                margin: 10px;
+            }
+
+            #flip{
+                align-self: center;
+            }
+        }
+
+        #switch{
+            align-self: center;
+        }
+
+        #buttons{
+            width: 80%;
+            align-self: center;
+
+            button{
+                margin: 5px;
+                background-color: $secondary-color;
+                padding: 15px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 20px;
+                color: $font-color;
+                width: 40%
+            }
+
+        }
+
+    }
+
+}

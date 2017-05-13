@@ -23,8 +23,9 @@ import { DocPlanComponent } from "./components/docPlan/doc-plan.component";
 import { RecordActionComponent } from "./components/recordAction/record-action.component";
 import { HomeComponent } from "./components/home/home.component";
 import { NewsfeedComponent } from "./components/newsfeed/newsfeed.component";
-
-
+import { LandingComponent } from "./components/landing/landing.component";
+import { SignupComponent } from "./components/signup/signup.component";
+import { UiSwitchModule } from 'angular2-ui-switch'
 
 const appRoutes: Routes = [
  // { path: 'pest/:id/suggestions', component: PestSuggestionsComponent },
@@ -36,7 +37,9 @@ const appRoutes: Routes = [
  // { path: 'plan', component: DocPlanComponent },
  // { path: 'record', component: RecordActionComponent },
   { path: 'pestmap', component: PestMapComponent },
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: '', component: LandingComponent },
  /* { path: '',
     redirectTo: '/',
   },*/
@@ -52,6 +55,8 @@ const appRoutes: Routes = [
     TopBarComponent,
     HomeComponent,
     BottomBarComponent,
+    LandingComponent,
+    SignupComponent,
  /*   ManageFieldComponent,
     PestDataComponent,
     PestFormComponent,
@@ -74,7 +79,8 @@ const appRoutes: Routes = [
   // Modules
   imports: [
     BrowserModule,
-    FormsModule,          
+    FormsModule,
+    UiSwitchModule,          
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: MapKey
