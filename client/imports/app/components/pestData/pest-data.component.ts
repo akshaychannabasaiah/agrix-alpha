@@ -6,6 +6,7 @@ import { PestMapDataService } from "../../services/pestMap-data.service";
 import { PestLocation } from "../../../../../both/models/pestLocation.model";
 import { PestLocationCollection } from "../../../../../both/collections/pestLocation.collection";
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: "pest-data",
@@ -58,7 +59,7 @@ export class PestDataComponent implements OnInit {
 
   ] 
 
-  constructor(private pestMapDataService: PestMapDataService, private route: ActivatedRoute) {
+  constructor(private pestMapDataService: PestMapDataService, private route: ActivatedRoute, public _router: Router) {
 
   }
 
@@ -77,6 +78,12 @@ this.data = this.pestMapDataService.getData().zone();
         this.centerLong = data[0].long;
     });
 
+  }
+
+  clicked(id){
+    if(id==1){
+      this._router.navigateByUrl('publishspotting');
+    }
   }
 
 

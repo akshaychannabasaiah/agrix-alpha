@@ -25,17 +25,19 @@ import { HomeComponent } from "./components/home/home.component";
 import { NewsfeedComponent } from "./components/newsfeed/newsfeed.component";
 import { LandingComponent } from "./components/landing/landing.component";
 import { SignupComponent } from "./components/signup/signup.component";
-import { UiSwitchModule } from 'angular2-ui-switch'
+import { UiSwitchModule } from 'angular2-ui-switch';
+
 
 const appRoutes: Routes = [
  // { path: 'pest/:id/suggestions', component: PestSuggestionsComponent },
   { path: 'pest/:id', component: PestDataComponent },
 //  { path: 'spotPest', component: SpotPestComponent },
-//  { path: 'spotPest/pestForm', component: PestFormComponent },
+//  
  // { path: 'pesticide/:id', component: PesticideComponent },
  // { path: 'manage', component: ManageFieldComponent },
  // { path: 'plan', component: DocPlanComponent },
  // { path: 'record', component: RecordActionComponent },
+ { path: 'publishspotting', component: PestFormComponent },
   { path: 'pestmap', component: PestMapComponent },
   { path: 'home', component: HomeComponent },
   { path: 'signup', component: SignupComponent },
@@ -59,9 +61,10 @@ const appRoutes: Routes = [
     SignupComponent,
     NewsfeedComponent,
     PestDataComponent,
+    PestFormComponent,
  /*   ManageFieldComponent,
     
-    PestFormComponent,
+    
     PesticideComponent,
     PestSuggestionsComponent,
     DocPlanComponent,
@@ -82,7 +85,8 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    UiSwitchModule,          
+    UiSwitchModule,
+         
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: MapKey

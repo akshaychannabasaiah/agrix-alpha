@@ -5,4 +5,6 @@ export interface PestLocation {
   radius: number;
   gradient: number;
   opacity: number;
+  date?: string;
+  field?: any;
 }
