@@ -29,7 +29,7 @@ import { UiSwitchModule } from 'angular2-ui-switch'
 
 const appRoutes: Routes = [
  // { path: 'pest/:id/suggestions', component: PestSuggestionsComponent },
- // { path: 'pest/:id', component: PestDataComponent },
+  { path: 'pest/:id', component: PestDataComponent },
 //  { path: 'spotPest', component: SpotPestComponent },
 //  { path: 'spotPest/pestForm', component: PestFormComponent },
  // { path: 'pesticide/:id', component: PesticideComponent },
@@ -57,13 +57,15 @@ const appRoutes: Routes = [
     BottomBarComponent,
     LandingComponent,
     SignupComponent,
- /*   ManageFieldComponent,
+    NewsfeedComponent,
     PestDataComponent,
+ /*   ManageFieldComponent,
+    
     PestFormComponent,
     PesticideComponent,
     PestSuggestionsComponent,
     DocPlanComponent,
-    NewsfeedComponent,
+    
     RecordActionComponent,
     SpotPestComponent
 */  ],

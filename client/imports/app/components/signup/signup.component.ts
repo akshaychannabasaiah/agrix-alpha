@@ -4,7 +4,7 @@ import style from "./signup.component.scss";
 import { Farmer } from "../../../../../both/models/farmer.model";
 import { FarmerCollection } from "../../../../../both/collections/farmer.collection";
 import { Location } from '@angular/common';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: "sign-up",

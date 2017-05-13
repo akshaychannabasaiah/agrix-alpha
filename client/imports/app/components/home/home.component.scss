@@ -1,9 +1,13 @@
- #home{
+@import '../../styles/colors';
+
+#home{
+top: 30px;
 width: 100%;
-height: 110vh;
+height: 150vh;
 display: flex;
 flex-direction: column;
 justify-content: center;
+background-color: $primary-color;
 
  #map{
     text-align: center;
@@ -14,7 +18,7 @@ justify-content: center;
     align-items: center;
     justify-content: center;
     width: 90%;
-    height: 50%;
+    height: 30%;
     margin: 0;
     border-radius: 10px;
 

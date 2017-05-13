@@ -2,6 +2,12 @@
     <h3>News Feed</h3>
     <div id="newsfeed-container">
     <h3 *ngIf="!data">No new news!</h3>
-    
+    <li *ngFor="let d of data">
+        <div (click)="selected(d.id)" id="news-item">
+            <img id="icon" src={{image[d.id]}} />
+            <div id="news-text">{{d.details}}</div>
+        </div>
+    </li>
+    </div>
     
     </div>
