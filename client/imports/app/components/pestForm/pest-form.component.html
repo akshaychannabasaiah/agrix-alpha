@@ -23,10 +23,10 @@
       </div>
 
     <div class="field">  
-    <p-dropdown [styleClass]="inputs" name="field" placeholder="Location" [options]="fieldsSelection"></p-dropdown>
+    <p-dropdown [styleClass]="inputs"  name="field" placeholder="Location" [options]="fieldsSelection"></p-dropdown>
     </div>
     <div class="field">    
-    <p-calendar name="date" [styleClass]="inputs" placeholder="Date" [(ngModel)]="formdata.date"></p-calendar --> 
+    <p-calendar name="date" [styleClass]="inputss" [inputStyleClass]="inputs" placeholder="Date" [(ngModel)]="formdata.date"></p-calendar> 
     </div>
 
       <button id="submit" type="submit">Publish</button>  

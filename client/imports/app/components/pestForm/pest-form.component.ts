@@ -61,13 +61,13 @@ export class PestFormComponent implements OnInit {
     this.formdata = this.initdata;
     this.fieldsSelection = [];
     this.fieldsSelection.push({
-      label: 'field1', value: this.fields[0]
+      label: 'Super Field', value: this.fields[0]
     });
     this.fieldsSelection.push({
-      label: 'field2', value: this.fields[1]
+      label: 'Mega Field', value: this.fields[1]
     });
     this.fieldsSelection.push({
-      label: 'field3', value: this.fields[2]
+      label: 'A Field', value: this.fields[2]
     });
 
   }
@@ -77,8 +77,8 @@ export class PestFormComponent implements OnInit {
 
   addSpotting(data){
     this.formdata.name = data.pestname;
-    this.formdata.field = data.field;
-    this.formdata.long = data.long;
+    this.formdata.lat = data.field.lat;
+    this.formdata.long = data.long.long;
     this.formdata.radius = 25000;
     this.formdata.opacity = 0.5;
     this.formdata.gradient = 25;
