@@ -26,7 +26,7 @@ import { NewsfeedComponent } from "./components/newsfeed/newsfeed.component";
 import { LandingComponent } from "./components/landing/landing.component";
 import { SignupComponent } from "./components/signup/signup.component";
 import { UiSwitchModule } from 'angular2-ui-switch';
-
+import {DropdownModule, CalendarModule} from 'primeng/primeng';
 
 const appRoutes: Routes = [
  // { path: 'pest/:id/suggestions', component: PestSuggestionsComponent },
@@ -86,7 +86,8 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     UiSwitchModule,
-         
+    CalendarModule,
+    DropdownModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: MapKey

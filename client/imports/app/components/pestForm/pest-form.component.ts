@@ -4,7 +4,7 @@ import style from "./pest-form.component.scss";
 import { PestLocation } from "../../../../../both/models/pestLocation.model";
 import { PestLocationCollection } from "../../../../../both/collections/pestLocation.collection";
 import { PestMapDataService } from "../../services/pestMap-data.service";
-import {SelectItem} from 'primeng/primeng';
+import { SelectItem } from 'primeng/primeng';
 
 @Component({
   selector: "pest-form",
@@ -17,7 +17,7 @@ export class PestFormComponent implements OnInit {
   compName: string;
   centerLat = 0;
   centerLong = 0;
-  processing: Boolean = true;
+  processing: Boolean = false;
   formdata: PestLocation;
   initdata: PestLocation = {
     name:'',
@@ -76,13 +76,15 @@ export class PestFormComponent implements OnInit {
   }
 
   addSpotting(data){
-    this.formdata.name = data.pestName;
+    this.formdata.name = data.pestname;
     this.formdata.field = data.field;
     this.formdata.long = data.long;
     this.formdata.radius = 25000;
     this.formdata.opacity = 0.5;
     this.formdata.gradient = 25;
     PestLocationCollection.insert(this.formdata);
+    console.log(this.formdata);
     this.formdata = this.initdata;
+    
   }
 }
