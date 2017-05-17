@@ -15,6 +15,7 @@ export class TopBarComponent {
   }
 
   backpressed(){
+    
     this._location.back();
   }
 }

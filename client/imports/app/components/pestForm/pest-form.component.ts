@@ -1,10 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import template from "./pest-form.component.html";
 import style from "./pest-form.component.scss";
-import { PestLocation } from "../../../../../both/models/pestLocation.model";
-import { PestLocationCollection } from "../../../../../both/collections/pestLocation.collection";
+import { PestData } from "../../../../../both/models/pestData.model";
+import { PestDataCollection } from "../../../../../both/collections/pestData.collection";
 import { PestMapDataService } from "../../services/pestMap-data.service";
 import { SelectItem } from 'primeng/primeng';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: "pest-form",
@@ -13,21 +15,22 @@ import { SelectItem } from 'primeng/primeng';
 })
 
 export class PestFormComponent implements OnInit {
-  
+  published: boolean = false;
   compName: string;
   centerLat = 0;
   centerLong = 0;
   processing: Boolean = false;
-  formdata: PestLocation;
-  initdata: PestLocation = {
+  formdata: PestData;
+  initdata: PestData = {
     name:'',
+    type: '',
     lat: undefined,
     long: undefined,
     radius: undefined,
     gradient: 25,
     opacity: undefined,
-    date: '',
     field: {},
+    date: new Date(),
   };
 
   
@@ -56,7 +59,7 @@ export class PestFormComponent implements OnInit {
   fieldsSelection : SelectItem[];
 
 
-  constructor() {
+  constructor(public _router: Router) {
     this.compName = "Publish Spotting";
     this.formdata = this.initdata;
     this.fieldsSelection = [];
@@ -78,13 +81,24 @@ export class PestFormComponent implements OnInit {
   addSpotting(data){
     this.formdata.name = data.pestname;
     this.formdata.lat = data.field.lat;
-    this.formdata.long = data.long.long;
+    this.formdata.long = data.field.long;
     this.formdata.radius = 25000;
     this.formdata.opacity = 0.5;
     this.formdata.gradient = 25;
-    PestLocationCollection.insert(this.formdata);
-    console.log(this.formdata);
-    this.formdata = this.initdata;
-    
+    this.formdata.date = data.date;
+    PestDataCollection.insert(this.formdata);
+ //   console.log(this.formdata);
+   // this.formdata = this.initdata;
+    this.published = true;
+  }
+
+  typeSelected(type: string){
+    this.formdata.type = type;
+  }
+
+  clicked(id){
+    if(id == 1){
+      this._router.navigateByUrl('pest/1/suggestions');
+    }
   }
 }

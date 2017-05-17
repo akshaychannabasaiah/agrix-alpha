@@ -1,0 +1,27 @@
+@import '../../styles/colors';
+
+#pest-suggestions{
+width: 100%;
+
+img {
+    margin-top: 50px;
+width: 90%;
+}
+
+#sort-container{
+        display: flex;
+        flex-direction: row;
+        margin: 2px;
+
+        a {
+            align-self: center;
+            text-align: center;
+
+            img{
+            width: 50%;
+        }
+    }
+
+}
+
+}

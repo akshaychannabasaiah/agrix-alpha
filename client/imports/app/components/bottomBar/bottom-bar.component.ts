@@ -26,7 +26,7 @@ export class BottomBarComponent {
       this._router.navigateByUrl('home');
     }
     else if(id===4){
-      
+      this._router.navigateByUrl('publishspotting');
     }
     else{
 

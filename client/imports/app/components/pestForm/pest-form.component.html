@@ -6,15 +6,33 @@
 <h3 *ngIf="processing">Loading map....</h3>  
 
 <sebm-google-map *ngIf="!processing" [latitude]="centerLat" [longitude]="centerLong">
+<sebm-google-map-marker *ngIf="published" [latitude]="formdata.lat" [longitude]="formdata.long" iconUrl="/images/weed_map.png"></sebm-google-map-marker> 
 </sebm-google-map>
 </div>
 
-<div id="pest-form-container">  
+<div *ngIf="published" id="afterPublish">
+<p>Published Successfully!</p>
+<img src="/images/Success_icon.png"/>
+<div id="buttons">
+<span><a (click)="clicked(1)">See what others did</a></span>
+<span><a (click)="clicked(2)">Contact Consultant</a></span>
+</div>
+</div>
+
+<div *ngIf="!published" id="pest-form-container">  
 
     <form #f="ngForm"  
           (ngSubmit)="addSpotting(f.value)"  
           >
  
+      <div id="pest-icons-container">
+        <a (click)="typeSelected('weed')"><img src="images/weed_icon.png"/></a>
+        <a (click)="typeSelected('bug')"><img src="images/bug_icon.png"/></a>
+        <a (click)="typeSelected('fungi')"><img src="images/fungi_icon.png"/></a>
+        <a (click)="typeSelected('warning')"><img src="images/warning_icon.png"/></a>
+      </div>
+
+
       <div class="field">  
         <input type="text"  
                id="pestName"  
@@ -23,13 +41,13 @@
       </div>
 
     <div class="field">  
-    <p-dropdown [styleClass]="inputs"  name="field" placeholder="Location" [options]="fieldsSelection"></p-dropdown>
+    <p-dropdown [(ngModel)]="formdata.field" [styleClass]="inputs" id="field" name="field" placeholder="Location" [options]="fieldsSelection"></p-dropdown>
     </div>
     <div class="field">    
     <p-calendar name="date" [styleClass]="inputss" [inputStyleClass]="inputs" placeholder="Date" [(ngModel)]="formdata.date"></p-calendar> 
     </div>
 
-      <button id="submit" type="submit">Publish</button>  
+    <button id="submit" type="submit">Publish</button>  
     </form>  
   </div>  
 </div>

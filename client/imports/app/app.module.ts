@@ -27,9 +27,10 @@ import { LandingComponent } from "./components/landing/landing.component";
 import { SignupComponent } from "./components/signup/signup.component";
 import { UiSwitchModule } from 'angular2-ui-switch';
 import {DropdownModule, CalendarModule} from 'primeng/primeng';
+import { RatingModule } from 'ng2-rating';
 
 const appRoutes: Routes = [
- // { path: 'pest/:id/suggestions', component: PestSuggestionsComponent },
+  { path: 'pest/:id/suggestions', component: PestSuggestionsComponent },
   { path: 'pest/:id', component: PestDataComponent },
 //  { path: 'spotPest', component: SpotPestComponent },
 //  
@@ -62,13 +63,10 @@ const appRoutes: Routes = [
     NewsfeedComponent,
     PestDataComponent,
     PestFormComponent,
- /*   ManageFieldComponent,
-    
-    
-    PesticideComponent,
     PestSuggestionsComponent,
+ /*   ManageFieldComponent,
+    PesticideComponent,  
     DocPlanComponent,
-    
     RecordActionComponent,
     SpotPestComponent
 */  ],
@@ -87,6 +85,7 @@ const appRoutes: Routes = [
     FormsModule,
     UiSwitchModule,
     CalendarModule,
+    RatingModule,
     DropdownModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
