@@ -4,7 +4,7 @@ import { Observable } from "rxjs";
 import { PestMapDataService } from "../../services/pestMap-data.service";
 import { PestLocation } from "../../../../../both/models/pestLocation.model";
 import { PestLocationCollection } from "../../../../../both/collections/pestLocation.collection";
-
+import {Router} from '@angular/router';
 import template from "./home.component.html";
 import style from "./home.component.scss";
 
@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
     opacity: undefined
   };
 
-  constructor(private pestMapDataService: PestMapDataService) {
+  constructor(private pestMapDataService: PestMapDataService, public _router: Router) {
     this.compName = "Agrix Alpha";
     this.formdata = this.initdata;
   }
@@ -47,6 +47,6 @@ export class HomeComponent implements OnInit {
   }
 
   clicked(e){
-    console.log(e);
+    this._router.navigateByUrl('pest/' + '1');
   }
 }

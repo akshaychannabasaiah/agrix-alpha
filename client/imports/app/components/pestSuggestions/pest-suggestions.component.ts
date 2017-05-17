@@ -70,8 +70,8 @@ export class PestSuggestionsComponent implements OnInit {
   } 
   ]
 
-iconsToDisplay : string[]=[
-   '★', '☐', '☐' 
+iconsToDisplay : any[]=[
+   ['★', '◼', '◼'],['☆', '☐', '☐'] 
 ];
 
   constructor() {

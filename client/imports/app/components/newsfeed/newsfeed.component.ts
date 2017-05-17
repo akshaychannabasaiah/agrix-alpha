@@ -16,28 +16,28 @@ export class NewsfeedComponent implements OnInit {
     {
       id: 0,
       type: 'weed',
-      details: 'Corn Weevil alert!!!' 
+      details: 'Corn Weevil alert!' 
     },
     {
       id: 1,
       type: 'bug',
-      details: 'Corn Weevil alert!!!' 
+      details: 'Weed is coming.' 
     },
     {
       id: 2,
       type: 'fungi',
-      details: 'Corn Weevil alert!!!' 
+      details: 'Fungi everywhere.' 
     },
     {
       id: 3,
       type: 'alert',
-      details: 'Corn Weevil alert!!!' 
+      details: 'Frost alert!' 
     }
 
   ];
 
   image: string[] =[
-    "images/bug_icon.png", "images/weed_icon.png", "images/warning_icon.png", "images/fungi_icon.png"
+    "images/bug_icon.png", "images/weed_icon.png", "images/fungi_icon.png", "images/warning_icon.png", 
   ];
 
   constructor(private _location: Location, public _router: Router) {
