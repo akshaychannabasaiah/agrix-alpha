@@ -25,6 +25,7 @@ import { RecordActionComponent } from "./components/recordAction/record-action.c
 import { HomeComponent } from "./components/home/home.component";
 import { NewsfeedComponent } from "./components/newsfeed/newsfeed.component";
 import { LandingComponent } from "./components/landing/landing.component";
+import { ConsultantComponent } from "./components/consultant/consultant.component";
 import { SignupComponent } from "./components/signup/signup.component";
 import { UiSwitchModule } from 'angular2-ui-switch';
 import {DropdownModule, CalendarModule} from 'primeng/primeng';
@@ -33,12 +34,12 @@ import { RatingModule } from 'ng2-rating';
 const appRoutes: Routes = [
   { path: 'pest/:id/suggestions', component: PestSuggestionsComponent },
   { path: 'pest/:id', component: PestDataComponent },
-//  { path: 'spotPest', component: SpotPestComponent },
-//  
+//  { path: 'spotPest', component: SpotPestComponent },  
  // { path: 'pesticide/:id', component: PesticideComponent },
  // { path: 'manage', component: ManageFieldComponent },
   { path: 'docplan', component: DocPlanComponent },
  // { path: 'record', component: RecordActionComponent },
+  { path: 'consultant', component: ConsultantComponent },
   { path: 'settings', component: SettingsComponent },
   { path: 'publishspotting', component: PestFormComponent },
   { path: 'pestmap', component: PestMapComponent },
@@ -65,6 +66,7 @@ const appRoutes: Routes = [
     NewsfeedComponent,
     PestDataComponent,
     PestFormComponent,
+    ConsultantComponent,
     SettingsComponent,
     DocPlanComponent,
     PestSuggestionsComponent,

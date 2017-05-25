@@ -84,6 +84,9 @@ this.data = this.pestMapDataService.getData().zone();
     if(id==1){
       this._router.navigateByUrl('publishspotting');
     }
+    else{
+      this._router.navigateByUrl('consultant');
+    }
   }
 
 

@@ -1,0 +1,38 @@
+@import '../../styles/colors';
+
+#consultant{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 135vh;
+    position: relative;
+    top: 20px;
+    background-color: $primary-color;
+
+       
+            #consultant-container{
+                align-self: center;
+                width: 90%;
+                margin: 5px;
+                padding: 10px;
+                cursor: pointer;
+                img{
+                    width: 60%;
+                }
+                p{
+                    font-size: 15px;
+                    color: $font-color;
+                    margin: 5px;
+                }
+                button{
+                    font-size: 15px;
+                    padding: 5px;
+                    background-color: $secondary-color;
+                    color: white;
+                }
+                
+                }
+
+        }
+
+
