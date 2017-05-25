@@ -26,10 +26,10 @@
           >
  
       <div id="pest-icons-container">
-        <a (click)="typeSelected('weed')"><img src="images/weed_icon.png"/></a>
-        <a (click)="typeSelected('bug')"><img src="images/bug_icon.png"/></a>
-        <a (click)="typeSelected('fungi')"><img src="images/fungi_icon.png"/></a>
-        <a (click)="typeSelected('warning')"><img src="images/warning_icon.png"/></a>
+        <a (click)="typeSelected(0)"><img [ngStyle]="styles[0]" src="images/weed_icon.png"/></a>
+        <a (click)="typeSelected(1)"><img [ngStyle]="styles[1]" src="images/bug_icon.png"/></a>
+        <a (click)="typeSelected(2)"><img [ngStyle]="styles[2]" src="images/fungi_icon.png"/></a>
+        <a (click)="typeSelected(3)"><img [ngStyle]="styles[3]" src="images/warning_icon.png"/></a>
       </div>
 
 

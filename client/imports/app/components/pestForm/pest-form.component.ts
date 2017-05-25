@@ -33,7 +33,9 @@ export class PestFormComponent implements OnInit {
     date: new Date(),
   };
 
-  
+  selectedStyle:any = {border: '3px solid #f24964' };
+  styles:any=[{},{},{},{}];
+  types:string[]=['weed','bug','fungi','warning'];
 
   fields: any[]=[
     {
@@ -92,8 +94,10 @@ export class PestFormComponent implements OnInit {
     this.published = true;
   }
 
-  typeSelected(type: string){
-    this.formdata.type = type;
+  typeSelected(id: number){
+    this.formdata.type = this.types[id];
+    this.styles=[{},{},{},{}];
+    this.styles[id]=this.selectedStyle;
   }
 
   clicked(id){
