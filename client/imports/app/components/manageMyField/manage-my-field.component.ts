@@ -1,6 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import template from "./manage-my-field.component.html";
 import style from "./manage-my-field.component.scss";
+import { FieldDataService } from "../../services/field-data.service";
+import { Observable } from "rxjs";
+
+import { Field } from "../../../../../both/models/field.model";
+import { FieldCollection } from "../../../../../both/collections/field.collection";
 
 @Component({
   selector: "manage-my-field",
@@ -9,8 +14,11 @@ import style from "./manage-my-field.component.scss";
 })
 export class ManageFieldComponent implements OnInit {
   processing : boolean = true;
+  centerLat: number = 20;
+  centerLong: number = 20;
   type: string = "doughnut";
   compName: string;
+  fetchData: Observable<Field[]>;
   data: any = {
     datasets: [{
       data: [],
@@ -38,7 +46,15 @@ fields: any[]=[
         name: 'Field 1',
         size: 87,
         lat: 35.00,
-        long: 45.00
+        long: 45.00,
+        boundaries: [
+          { lat: 30,  lng: 40 },
+          { lat: 30,  lng: 50 },
+          { lat: 40, lng: 50 },
+          { lat: 40, lng: 40 },
+          { lat: 30,  lng: 40 }
+        ],
+        color: '#E91E63'
     },
     {
         id: 1,
@@ -46,7 +62,15 @@ fields: any[]=[
         size: 73,
         name: 'Field 2',
         lat: 35.00,
-        long: 47.00
+        long: 47.00,
+        boundaries: [
+          { lat: 20,  lng: 40 },
+          { lat: 20,  lng: 40 },
+          { lat: 30, lng: 40 },
+          { lat: 30, lng: 30 },
+          { lat: 20,  lng: 30 }
+        ],
+        color: '#9C27B0'
     },
     {
         id: 2,
@@ -54,7 +78,15 @@ fields: any[]=[
         crop: 'Beets',
         size: 13,
         lat: 35.00,
-        long: 46.00
+        long: 46.00,
+        boundaries: [
+          { lat: 10,  lng: 20 },
+          { lat: 10,  lng: 30 },
+          { lat: 20, lng: 30 },
+          { lat: 20, lng: 20 },
+          { lat: 20,  lng: 20 }
+        ],
+        color: '#009688'
     },
     {
         id: 3,
@@ -62,15 +94,38 @@ fields: any[]=[
         crop: 'Wheat',
         size: 68,
         lat: 35.00,
-        long: 49.00
+        long: 49.00,
+        boundaries: [
+          { lat: 10,  lng: 20 },
+          { lat: 10,  lng: 30 },
+          { lat: 20, lng: 30 },
+          { lat: 20, lng: 20 },
+          { lat: 20,  lng: 20 }
+        ],
+        color: '#FF9800'
     },
   ];
 
   colors: any = ['#E91E63', '#9C27B0', '#009688', '#FF9800'] 
 
 
-  constructor() {
+  constructor(private fieldDataService: FieldDataService) {
     this.compName = "Manage Fields";
+    
+
+  }
+
+  ngOnInit() {
+   /* this.fetchData = this.fieldDataService.getData().zone();
+    this.fetchData.subscribe((fields) =>{
+    fields.map( (field, index) => 
+    {
+      this.data.datasets[0].data.push(field.area);
+      this.data.labels.push(field.cropType + " " + field.area + "ha");
+      this.data.datasets[0].backgroundColor.push(this.colors[index]); 
+    });
+    });
+    this.data.datasets[0].backgroundColor = this.colors; */
     this.fields.map( (field, index) => 
     {
       this.data.datasets[0].data.push(field.size);
@@ -78,9 +133,15 @@ fields: any[]=[
       this.data.datasets[0].backgroundColor.push(this.colors[index]); 
     });
     this.processing = false;
-
   }
-
-  ngOnInit() {
-  }
+/*
+  sortData(){
+    this.fetchData.map((field, index) => 
+    {
+      this.data.datasets[0].data.push(field.area);
+      this.data.labels.push(field.cropType + " " + field.area + "ha");
+      this.data.datasets[0].backgroundColor.push(this.colors[index]); 
+    });
+    this.processing = false;
+  }*/
 }

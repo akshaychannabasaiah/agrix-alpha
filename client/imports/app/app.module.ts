@@ -5,6 +5,7 @@ import { DemoComponent } from "./components/demo/demo.component";
 import { DemoDataService } from "./components/demo/demo-data.service";
 import { PestMapComponent } from "./components/pestMap/pestMap.component";
 import { PestMapDataService } from "./services/pestMap-data.service";
+import { FieldDataService } from "./services/field-data.service";
 import { FormsModule,  
   ReactiveFormsModule  
 } from '@angular/forms';
@@ -84,7 +85,8 @@ const appRoutes: Routes = [
   // Providers
   providers: [
     DemoDataService,
-    PestMapDataService
+    PestMapDataService,
+    FieldDataService
   ],
   // Modules
   imports: [

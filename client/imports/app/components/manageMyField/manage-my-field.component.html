@@ -5,7 +5,8 @@
 <h3 *ngIf="processing">Loading map....</h3>  
 
 <sebm-google-map *ngIf="!processing" [latitude]="centerLat" [longitude]="centerLong">
-<sebm-google-map-marker *ngIf="published" [latitude]="formdata.lat" [longitude]="formdata.long" iconUrl="/images/weed_map.png"></sebm-google-map-marker> 
+<li *ngFor="let d of fields">
+    <sebm-map-polygon [paths]="d.boundaries" [fillColor]="d.color"></sebm-map-polygon>
 </sebm-google-map>
 </div>
 
