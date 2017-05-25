@@ -1,0 +1,17 @@
+<top-bar [title]="compName"></top-bar>
+
+<div id="manage-field">
+<div id="map">
+<h3 *ngIf="processing">Loading map....</h3>  
+
+<sebm-google-map *ngIf="!processing" [latitude]="centerLat" [longitude]="centerLong">
+<sebm-google-map-marker *ngIf="published" [latitude]="formdata.lat" [longitude]="formdata.long" iconUrl="/images/weed_map.png"></sebm-google-map-marker> 
+</sebm-google-map>
+</div>
+
+
+<chart [type]="type" [data]="data" [options]="options" ></chart>
+
+<button>Add Field</button>
+</div>
+  <bottom-bar></bottom-bar>

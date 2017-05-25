@@ -20,7 +20,7 @@ export class BottomBarComponent {
       this._router.navigateByUrl('docplan');
     }
     else if(id===2){
-
+      this._router.navigateByUrl('record');
     }
     else if(id===3){
       this._router.navigateByUrl('home');

@@ -35,7 +35,7 @@ export class PestDataComponent implements OnInit {
     {
       id: 1,
       name: 'White Mildew',
-      icon: "/images/Corn_weevil.jpg",
+      icon: "/images/armyworm.jpg",
       info1: "Breeds between 15 and 35 °C",
       info2: "Breeds between 15 and 35 °C",
       info3: "Breeds between 15 and 35 °C",
@@ -43,7 +43,7 @@ export class PestDataComponent implements OnInit {
     {
       id: 2,
       name: 'Rough Pigweed',
-      icon: "/images/Corn_weevil.jpg",
+      icon: "/images/aphid.jpg",
       info1: "Breeds between 15 and 35 °C",
       info2: "Breeds between 15 and 35 °C",
       info3: "Breeds between 15 and 35 °C",

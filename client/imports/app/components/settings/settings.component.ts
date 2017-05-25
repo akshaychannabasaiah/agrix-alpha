@@ -25,7 +25,7 @@ export class SettingsComponent {
         this._router.navigateByUrl('consultant');
       }
       else{
-         this._router.navigateByUrl('fields');
+         this._router.navigateByUrl('manage');
       }
   }
 

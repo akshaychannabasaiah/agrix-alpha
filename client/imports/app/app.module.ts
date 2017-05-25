@@ -30,15 +30,16 @@ import { SignupComponent } from "./components/signup/signup.component";
 import { UiSwitchModule } from 'angular2-ui-switch';
 import {DropdownModule, CalendarModule} from 'primeng/primeng';
 import { RatingModule } from 'ng2-rating';
+import { ChartModule } from 'angular2-chartjs';
 
 const appRoutes: Routes = [
   { path: 'pest/:id/suggestions', component: PestSuggestionsComponent },
   { path: 'pest/:id', component: PestDataComponent },
 //  { path: 'spotPest', component: SpotPestComponent },  
  // { path: 'pesticide/:id', component: PesticideComponent },
- // { path: 'manage', component: ManageFieldComponent },
+  { path: 'manage', component: ManageFieldComponent },
   { path: 'docplan', component: DocPlanComponent },
- // { path: 'record', component: RecordActionComponent },
+  { path: 'record', component: RecordActionComponent },
   { path: 'consultant', component: ConsultantComponent },
   { path: 'settings', component: SettingsComponent },
   { path: 'publishspotting', component: PestFormComponent },
@@ -70,10 +71,10 @@ const appRoutes: Routes = [
     SettingsComponent,
     DocPlanComponent,
     PestSuggestionsComponent,
- /*   ManageFieldComponent,
-    PesticideComponent,  
-    
     RecordActionComponent,
+    ManageFieldComponent,
+ /*   
+    PesticideComponent,  
     SpotPestComponent
 */  ],
   // Entry Components
@@ -92,6 +93,7 @@ const appRoutes: Routes = [
     UiSwitchModule,
     CalendarModule,
     RatingModule,
+    ChartModule,
     DropdownModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
@@ -102,9 +104,6 @@ const appRoutes: Routes = [
   // Main Component
   bootstrap: [ AppComponent ]
 })
-
-
-
 
 export class AppModule {
   constructor() {
