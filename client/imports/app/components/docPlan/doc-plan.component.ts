@@ -8,8 +8,9 @@ import style from "./doc-plan.component.scss";
   styles: [ style ]
 })
 export class DocPlanComponent implements OnInit {
-  
+  compName : string;
   constructor() {
+    this.compName = "Documentation";
   }
 
   ngOnInit() {

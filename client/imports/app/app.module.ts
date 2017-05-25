@@ -37,7 +37,7 @@ const appRoutes: Routes = [
 //  
  // { path: 'pesticide/:id', component: PesticideComponent },
  // { path: 'manage', component: ManageFieldComponent },
- // { path: 'plan', component: DocPlanComponent },
+  { path: 'docplan', component: DocPlanComponent },
  // { path: 'record', component: RecordActionComponent },
   { path: 'settings', component: SettingsComponent },
   { path: 'publishspotting', component: PestFormComponent },
@@ -66,10 +66,11 @@ const appRoutes: Routes = [
     PestDataComponent,
     PestFormComponent,
     SettingsComponent,
+    DocPlanComponent,
     PestSuggestionsComponent,
  /*   ManageFieldComponent,
     PesticideComponent,  
-    DocPlanComponent,
+    
     RecordActionComponent,
     SpotPestComponent
 */  ],

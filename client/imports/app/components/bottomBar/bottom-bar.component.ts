@@ -17,7 +17,7 @@ export class BottomBarComponent {
 
   buttonclick(id){
     if(id===1){
-
+      this._router.navigateByUrl('docplan');
     }
     else if(id===2){
 

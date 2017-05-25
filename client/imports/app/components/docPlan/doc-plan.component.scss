@@ -1,0 +1,32 @@
+@import '../../styles/colors';
+
+#docplan{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    background-color: $primary-color;
+
+        #buttons{
+            width: 80%;
+            align-self: center;
+
+            #icon-container{
+                margin: 5px;
+                padding: 10px;
+                cursor: pointer;
+                img{
+                    width: 60%;
+                }
+                p{
+                    font-size: 15px;
+                    color: $font-color;
+                    margin: 0;
+                }
+                
+                
+                }
+
+        }
+
+}
