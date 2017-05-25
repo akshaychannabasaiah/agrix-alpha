@@ -29,7 +29,7 @@ export class BottomBarComponent {
       this._router.navigateByUrl('publishspotting');
     }
     else{
-
+      this._router.navigateByUrl('settings');
     }
   }
 }

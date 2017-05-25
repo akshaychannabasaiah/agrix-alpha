@@ -19,6 +19,7 @@ import { SpotPestComponent } from "./components/spotPest/spot-pest.component";
 import { ManageFieldComponent } from "./components/manageMyField/manage-my-field.component";
 import { PestFormComponent } from "./components/pestForm/pest-form.component";
 import { PesticideComponent } from "./components/pesticide/pesticide.component";
+import { SettingsComponent } from "./components/settings/settings.component";
 import { DocPlanComponent } from "./components/docPlan/doc-plan.component";
 import { RecordActionComponent } from "./components/recordAction/record-action.component";
 import { HomeComponent } from "./components/home/home.component";
@@ -38,7 +39,8 @@ const appRoutes: Routes = [
  // { path: 'manage', component: ManageFieldComponent },
  // { path: 'plan', component: DocPlanComponent },
  // { path: 'record', component: RecordActionComponent },
- { path: 'publishspotting', component: PestFormComponent },
+  { path: 'settings', component: SettingsComponent },
+  { path: 'publishspotting', component: PestFormComponent },
   { path: 'pestmap', component: PestMapComponent },
   { path: 'home', component: HomeComponent },
   { path: 'signup', component: SignupComponent },
@@ -63,6 +65,7 @@ const appRoutes: Routes = [
     NewsfeedComponent,
     PestDataComponent,
     PestFormComponent,
+    SettingsComponent,
     PestSuggestionsComponent,
  /*   ManageFieldComponent,
     PesticideComponent,  

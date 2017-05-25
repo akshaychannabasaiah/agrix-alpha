@@ -1,0 +1,29 @@
+@import '../../styles/colors';
+
+#settings{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    background-color: $primary-color;
+
+        #buttons{
+            width: 80%;
+            align-self: center;
+
+            button{
+                margin: 5px;
+                background-color: $secondary-color;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 15px;
+                color: $font-color;
+                width: 80%
+            }
+
+        }
+
+}
+
