@@ -1,7 +1,7 @@
 
 <top-bar [title]="compName"></top-bar>
 
-<div id="pest-form">
+<div id="record-action">
 <div id="map">
 <h3 *ngIf="processing">Loading map....</h3>  
 
@@ -30,11 +30,6 @@
     <form #f="ngForm"  
           (ngSubmit)="addSpotting(f.value)"  
           >
-
-
-<div class="field">  
-    <p-dropdown [(ngModel)]="formdata.field" [styleClass]="inputs" id="field" name="field" placeholder="Location" [options]="fieldsSelection"></p-dropdown>
-    </div>
 
       <div class="field">  
         <input type="text"  
@@ -65,9 +60,14 @@
                name="pestname" [(ngModel)]="formdata.price" required>  
       </div>
 
-    
+    <label>Where and when?</label>
+
+    <div class="field">  
+    <p-dropdown [style]="{'width':'200px'}" [(ngModel)]="formdata.field" [styleClass]="inputs" id="field" name="field" placeholder="Location" [options]="fieldsSelection"></p-dropdown>
+    </div>
+
     <div class="field">    
-    <p-calendar name="date" [styleClass]="inputss" [inputStyleClass]="inputs" placeholder="Date" [(ngModel)]="formdata.date"></p-calendar> 
+    <p-calendar name="date" [inputStyleClass]="inputs" placeholder="Date" [(ngModel)]="formdata.date"></p-calendar> 
     </div>
 
     <button id="submit" type="submit">Save</button>  

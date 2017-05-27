@@ -41,10 +41,10 @@
       </div>
 
     <div class="field">  
-    <p-dropdown [(ngModel)]="formdata.field" [styleClass]="inputs" id="field" name="field" placeholder="Location" [options]="fieldsSelection"></p-dropdown>
+    <p-dropdown [(ngModel)]="formdata.field" [styleClass]="inputs" id="field" name="field" [style]="{'width':'200px'}" placeholder="Location" [options]="fieldsSelection"></p-dropdown>
     </div>
     <div class="field">    
-    <p-calendar name="date" [styleClass]="inputss" [inputStyleClass]="inputs" placeholder="Date" [(ngModel)]="formdata.date"></p-calendar> 
+    <p-calendar name="date" placeholder="Date" [(ngModel)]="formdata.date"></p-calendar> 
     </div>
 
     <button id="submit" type="submit">Publish</button>  

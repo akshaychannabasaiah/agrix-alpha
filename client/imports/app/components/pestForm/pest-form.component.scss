@@ -14,13 +14,10 @@ background-color: $primary-color;
 input, .ui-inputtext{
         padding: 5px;
         border-radius: 3px;
-        width: 200px;
+        width: 200px !important;
         text-align: left;
         font-size: 15px;
-    }
-
-    .inputss{
-        width: 1000px;
+        align-self: center;
     }
 
 h1{
@@ -90,11 +87,18 @@ h1{
 #pest-form-container{
     display: flex;
     flex-direction: column;
-    align-content: flex-start;
-    justify-content: flex-start;
+    align-content: center;
+    align-self: center;
+    justify-content: center;
     width: 90%;
     text-align: left;
     padding: 10px;
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
 
     #pest-icons-container{
         display: flex;
@@ -117,18 +121,23 @@ h1{
         margin-bottom: 5px;
         margin-top: 5px;
         width: 100%;
-        align-self: flex-start;
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        justify-content: center;
+        align-self: center;
         
-    
-    
+    }
 
-     
+    .ui-datepicker{
+        left: 20px;
     }
 
     button{
                 margin: 5px;
                 background-color: $secondary-color;
                 padding: 10px;
+                align-self: center;
                 border: none;
                 border-radius: 5px;
                 cursor: pointer;
@@ -136,7 +145,7 @@ h1{
                 color: $font-color;
                 width: 40%
             }
-    
+    }
 }
 
 }

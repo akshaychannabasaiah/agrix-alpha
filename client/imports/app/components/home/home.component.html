@@ -3,8 +3,8 @@
 
 <div id="home">
 <div id="map">
-<h3 *ngIf="processing">Loading map....</h3>  
-<sebm-google-map *ngIf="!processing" [latitude]="centerLat" [longitude]="centerLong">
+<h3 *ngIf="processing"><i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>Loading map....</h3>  
+<sebm-google-map *ngIf="!processing" [mapTypeControl]="enabled" [latitude]="centerLat" [longitude]="centerLong">
     <li *ngFor="let d of data | async">
     <sebm-google-map-marker [latitude]="d.lat" [longitude]="d.long" iconUrl="/images/weed_map.png" (markerClick)="clicked(1)"></sebm-google-map-marker> 
     </li>
