@@ -16,9 +16,9 @@ export class FakeDB {
     public static initData(): void {
         
 
-      data3.forEach((obj: Farmer) => {
-        FarmerCollection.insert(obj);
-      });
+    //   data3.forEach((obj: Farmer) => {
+    //     FarmerCollection.insert(obj);
+    //   });
 
     }
 }
