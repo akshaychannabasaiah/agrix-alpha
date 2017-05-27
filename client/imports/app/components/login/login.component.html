@@ -1,0 +1,29 @@
+<div id="login">
+<img src="/images/logo.png" id="signup-img" />
+<h1>Login</h1>
+
+<form #f="ngForm"
+(ngSubmit)="login(f.value)">
+ 
+      <div class="field">  
+          
+        <input type="text"  
+               id="email"  
+               placeholder="Email"  
+               name="email" [(ngModel)]="formdata.email" required>  
+      </div>
+
+      <div class="field">  
+         
+        <input type="password"  
+               id="password"  
+               placeholder="Password"  
+               name="password" [(ngModel)]="formdata.password" required>  
+      </div>
+
+<div id="buttons">
+<button id="submit" type="submit">Login</button>
+<button (click)="backpressed()">Cancel</button>
+</div>
+</form>
+</div>

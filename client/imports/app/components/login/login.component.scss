@@ -1,0 +1,52 @@
+@import '../../styles/colors';
+
+#login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    background-color: $primary-color;
+
+    #signup-img{
+        width: 30%;
+        margin: 15px;
+        align-self: center;
+    }
+
+    form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+        div{
+            padding: 2px;
+
+            input{
+                padding: 10px;
+                text-align: center;
+                border-radius: 3px;
+
+            }
+        }
+
+        #buttons{
+            width: 80%;
+            align-self: center;
+
+            button{
+                margin: 5px;
+                background-color: $secondary-color;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 15px;
+                color: $font-color;
+                width: 40%
+            }
+
+        }
+
+    }
+
+}

@@ -5,6 +5,8 @@ import { Farmer } from "../../../../../both/models/farmer.model";
 import { FarmerCollection } from "../../../../../both/collections/farmer.collection";
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { Accounts } from 'meteor/accounts-base';
+import { Meteor } from 'meteor/meteor';
 
 @Component({
   selector: "sign-up",
@@ -19,7 +21,7 @@ checked: boolean;
 //parentRouter: any = Router;
 
   constructor(private _location: Location, public _router: Router) {
-   }
+    }
     
   ngOnInit() {
    
