@@ -2,27 +2,27 @@
 <img src="/images/logo.png" id="signup-img" />
 <h1>Sign Up</h1>
 
-<form #f="ngForm">
+<form #f="ngForm" (ngSubmit)="signup(f.value)">
  
       <div class="field">  
           
         <input type="text"  
                id="fname"  
                placeholder="First Name"  
-               name="fname" required>  
+               name="fname" [(ngModel)]="formdata.firstname" required>  
       </div>
       <div class="field">  
          
         <input type="text"  
                id="lname"  
                placeholder="Last Name"  
-               name="lname" >  
+               name="lname" [(ngModel)]="formdata.lastname" >  
       </div>
 
     <div id="flipper">
-    <label>Farmer</label>
-      <ui-switch id="flip" color="#f24964" checked></ui-switch>
     <label>Consultant</label>
+      <ui-switch id="flip" name="isFarmer" color="#f24964" [(ngModel)]="formdata.isFarmer" isFarmer></ui-switch>
+    <label>Farmer</label>
     </div>
 
 
@@ -31,7 +31,7 @@
         <input type="text"  
                id="email"  
                placeholder="Email"  
-               name="email" required>  
+               name="email" [(ngModel)]="formdata.email" required>  
       </div>
 
       <div class="field">  
@@ -39,25 +39,25 @@
         <input type="text"  
                id="phone"  
                placeholder="Phone"  
-               name="phone" required>  
+               name="phone" [(ngModel)]="formdata.phone" required>  
       </div>
       <div class="field">  
          
         <input type="password"  
                id="password"  
                placeholder="Password"  
-               name="password" required>  
+               name="password" [(ngModel)]="formdata.password" required>  
       </div>
       <div class="field">  
           
         <input type="password"  
                id="password2"  
                placeholder="Confirm password"  
-               name="password2" required>  
+               name="password2" [(ngModel)]="formdata.confirmPassword" required>  
       </div>
 
 <div id="buttons">
-<button (click)="addFarmer()">Sign up</button>
+<button id="submit" type="submit">Sign up</button>
 <button (click)="backpressed()">Cancel</button>
 </div>
 </form>
