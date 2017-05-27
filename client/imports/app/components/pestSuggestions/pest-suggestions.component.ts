@@ -16,7 +16,7 @@ export class PestSuggestionsComponent implements OnInit {
     {
       id: 0,
       name: 'Corn Weevil',
-      icon: "/images/Corn_weevil.jpg",
+      icon: "/images/corn_weevil.jpg",
       info1: "Breeds between 15 and 35 °C",
       info2: "Breeds between 15 and 35 °C",
       info3: "Breeds between 15 and 35 °C",
@@ -24,7 +24,7 @@ export class PestSuggestionsComponent implements OnInit {
     {
       id: 1,
       name: 'White Mildew',
-      icon: "/images/Corn_weevil.jpg",
+      icon: "/images/corn_weevil.jpg",
       info1: "Breeds between 15 and 35 °C",
       info2: "Breeds between 15 and 35 °C",
       info3: "Breeds between 15 and 35 °C",
@@ -32,7 +32,7 @@ export class PestSuggestionsComponent implements OnInit {
     {
       id: 2,
       name: 'Rough Pigweed',
-      icon: "/images/Corn_weevil.jpg",
+      icon: "/images/corn_weevil.jpg",
       info1: "Breeds between 15 and 35 °C",
       info2: "Breeds between 15 and 35 °C",
       info3: "Breeds between 15 and 35 °C",
@@ -40,7 +40,7 @@ export class PestSuggestionsComponent implements OnInit {
     {
       id: 3,
       name: 'Frost',
-      icon: "/images/Corn_weevil.jpg",
+      icon: "/images/corn_weevil.jpg",
       info1: "Breeds between 15 and 35 °C",
       info2: "Breeds between 15 and 35 °C",
       info3: "Breeds between 15 and 35 °C",
@@ -59,13 +59,13 @@ export class PestSuggestionsComponent implements OnInit {
    {
       name: 'BASF Systrom',
       price: 2,
-      rating: 2.5,
+      rating: 2.8,
       times_used: 2 
   },
   {
       name: 'BASF AF',
       price: 3,
-      rating: 1,
+      rating: 1.6,
       times_used: 1 
   } 
   ]
