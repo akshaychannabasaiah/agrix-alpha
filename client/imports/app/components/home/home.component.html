@@ -1,0 +1,15 @@
+<top-bar [title]="compName"></top-bar>
+
+
+<div id="home">
+<div id="map">
+<h3 *ngIf="processing">Loading map....</h3>  
+<sebm-google-map *ngIf="!processing" [latitude]="centerLat" [longitude]="centerLong">
+    <li *ngFor="let d of data | async">
+    <sebm-google-map-marker [latitude]="d.lat" [longitude]="d.long" iconUrl="/images/weed_map.png" (markerClick)="clicked(1)"></sebm-google-map-marker> 
+    </li>
+</sebm-google-map>
+</div>
+
+<newsfeed></newsfeed>
+<bottom-bar></bottom-bar>

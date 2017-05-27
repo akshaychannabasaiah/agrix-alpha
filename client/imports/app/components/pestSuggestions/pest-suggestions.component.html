@@ -1,0 +1,21 @@
+<top-bar [title]="compName"></top-bar>
+<div id="pest-suggestions">
+<img src={{pestData[0].icon}} />
+
+<div id="sort-container">
+    <p> Sort by </p>
+    <div>
+    <a (click)="typeSelected(0)"><img src="images/rating_icon.png"/></a>
+    <a (click)="typeSelected(1)"><img src="images/cost_icon.png"/></a>
+    <a (click)="typeSelected(2)"><img src="images/freq_icon.png"/></a>
+    </div>
+</div>
+
+<div id="pesticides-container">
+<li *ngFor="let p of sortedPesticides">
+    <div id="pesticide">{{p.name}} <rating [float]="true" [(ngModel)]="p.rating" [readonly]="true" [fullIcon]="iconsToDisplay[0][displayingIcon]" [emptyIcon]="iconsToDisplay[1][displayingIcon]"></rating>
+</li>
+</div>
+
+</div>
+<bottom-bar></bottom-bar>

@@ -1,0 +1,93 @@
+@import '../../styles/colors';
+
+#pestdata{
+width: 100%;
+height: 130vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+background-color: $primary-color;
+
+h1{
+    margin:0;
+}
+
+#map{
+    text-align: center;
+    display: flex;
+    align-self: center;
+    align-content: center;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 30%;
+    margin: 0;
+    border-radius: 10px;
+
+  .sebm-google-map-container {
+  height: 100%;
+  width: 100%;
+  align-self: center;
+}
+
+}
+
+#pest-details{
+    display:flex;
+    flex-direction: row; 
+    height: 250px;
+
+    img{
+        width: 45%;
+        border-radius: 5px;
+        padding: 5px;
+        margin: 5px;
+        height: 90%;
+    }
+
+    #pest-text{
+        width: 50%;
+        padding: 3px;
+        margin-right: 5px;
+        text-align: left;
+    }
+
+
+
+
+}
+
+#buttons{
+    width: 90%;
+    align-self: center;
+
+    span{
+        width: 30%;
+        display: inline-block;
+        padding: 5px;
+        background-color: $secondary-color;
+        border-radius: 5px;
+        margin: 5px;
+    a{
+        font-size: 15px;
+        width: 100%;
+        text-decoration: none;
+        color: $font-color;
+    }
+    }
+}
+
+}
+
+@media only screen and (max-width: 425px){
+.sebm-google-map-container {
+  width: 80%;
+ }
+#add-pest{
+width: 90%;
+margin-left: 0px;
+margin-right: 0px;
+}
+
+}

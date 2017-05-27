@@ -1,0 +1,18 @@
+<top-bar [title]="compName"></top-bar>
+
+<div id="manage-field">
+<div id="map">
+<h3 *ngIf="processing">Loading map....</h3>  
+
+<sebm-google-map *ngIf="!processing" [latitude]="centerLat" [longitude]="centerLong">
+<li *ngFor="let d of fetchData | async; let i = index;">
+    <sebm-map-polygon [paths]="d.boundaries" [fillColor]="data.datasets[0].backgroundColor[i]"></sebm-map-polygon>
+</sebm-google-map>
+</div>
+
+
+<chart *ngIf="!processing" [type]="type" [data]="data" [options]="options" ></chart>
+
+<button>Add Field</button>
+</div>
+  <bottom-bar></bottom-bar>

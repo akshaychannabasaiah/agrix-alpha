@@ -1,0 +1,33 @@
+<top-bar [title]="compName"></top-bar>
+
+<div id="pestdata">
+<div id="map">
+<h3 *ngIf="processing">Loading map....</h3>  
+<sebm-google-map *ngIf="!processing" [latitude]="centerLat" [longitude]="centerLong">
+    <li *ngFor="let d of data | async">
+    <sebm-google-map-circle [latitude]="d.lat" [longitude]="d.long" [radius]="50000" [fillColor]="LightCoral" [fillOpacity]="d.opacity"></sebm-google-map-circle>
+    </li>
+</sebm-google-map>
+</div>
+
+<div *ngIf="!processing" id="pest-details">
+<img id="pest-img" src={{pest.icon}} />
+<div id="pest-text">
+    <ul>
+        <li>{{pest.info1}}</li>
+        <li>{{pest.info2}}</li>
+        <li>{{pest.info3}}</li>
+    </ul>
+</div>
+
+
+</div>
+
+<div id="buttons">
+<span><a (click)="clicked(1)">Publish spotting</a></span>
+<span><a (click)="clicked(2)">Contact Consultant</a></span>
+</div>
+
+</div>
+
+<bottom-bar></bottom-bar>

@@ -1,0 +1,31 @@
+@import '../../styles/colors';
+
+#bottom-bar{
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   height:50px;
+   width:100%;
+   background-color: $primary-color;
+   color: white;
+    font-size: 20px;
+    display: flex;
+justify-content: space-between;
+flex-direction: row;
+z-index: 999;
+
+a{
+  text-decoration: none;
+  align-self: center;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  
+  img{
+    width: 50%;
+  }
+
+}
+
+}

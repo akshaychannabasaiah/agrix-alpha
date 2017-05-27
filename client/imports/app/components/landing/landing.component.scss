@@ -1,0 +1,44 @@
+@import '../../styles/colors';
+
+#landing{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: $primary-color;
+
+    h1{
+        padding: 2px;
+        margin: 0;
+    }
+    h4{
+        margin: 2px;
+    }
+
+    #landing-img{
+        width: 40%;
+        margin: 20px;
+        align-self: center;
+    }
+
+#buttons{
+    width: 70%;
+    align-self: center;
+
+    span{
+        width: 40%;
+        display: inline-block;
+        padding: 10px;
+        background-color: $secondary-color;
+        border-radius: 5px;
+        margin: 5px;
+    a{
+        font-size: 20px;
+        width: 100%;
+        text-decoration: none;
+        color: $font-color;
+    }
+    }
+}
+}
