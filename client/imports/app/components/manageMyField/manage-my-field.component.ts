@@ -38,7 +38,7 @@ export class ManageFieldComponent implements OnInit {
         }
 };
 
-
+/*
 fields: any[]=[
     {
         id: 0,
@@ -104,8 +104,8 @@ fields: any[]=[
         ],
         color: '#FF9800'
     },
-  ];
-
+  ];*/
+  
   colors: any = ['#E91E63', '#9C27B0', '#009688', '#FF9800'] 
 
 
@@ -116,32 +116,24 @@ fields: any[]=[
   }
 
   ngOnInit() {
-   /* this.fetchData = this.fieldDataService.getData().zone();
-    this.fetchData.subscribe((fields) =>{
-    fields.map( (field, index) => 
-    {
-      this.data.datasets[0].data.push(field.area);
-      this.data.labels.push(field.cropType + " " + field.area + "ha");
-      this.data.datasets[0].backgroundColor.push(this.colors[index]); 
-    });
-    });
-    this.data.datasets[0].backgroundColor = this.colors; */
+   this.fetchData = this.fieldDataService.getData().zone();
+    this.fetchData.subscribe((fieldss) =>{
+    
+    fieldss.map((field, index) => {
+    this.data.datasets[0].backgroundColor[index] = this.colors[index % 4];
+    this.data.datasets[0].data.push(field.area);
+    this.data.labels.push(field.cropType + " " + field.area + "ha");
+    this.processing = false;
+    })
+      
+  });
+    /*
     this.fields.map( (field, index) => 
     {
       this.data.datasets[0].data.push(field.size);
       this.data.labels.push(field.crop + " " + field.size + "ha");
       this.data.datasets[0].backgroundColor.push(this.colors[index]); 
     });
-    this.processing = false;
+    this.processing = false;*/
   }
-/*
-  sortData(){
-    this.fetchData.map((field, index) => 
-    {
-      this.data.datasets[0].data.push(field.area);
-      this.data.labels.push(field.cropType + " " + field.area + "ha");
-      this.data.datasets[0].backgroundColor.push(this.colors[index]); 
-    });
-    this.processing = false;
-  }*/
 }
