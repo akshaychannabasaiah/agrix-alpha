@@ -63,8 +63,6 @@ export class Main {
         name: "John",
         email: "x@y.com",
         cell: "5555555555",
-        password: "asdas", 
-        isFarmer: true,
         fields: []
       }
       ];
