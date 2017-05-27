@@ -28,10 +28,13 @@ import { NewsfeedComponent } from "./components/newsfeed/newsfeed.component";
 import { LandingComponent } from "./components/landing/landing.component";
 import { ConsultantComponent } from "./components/consultant/consultant.component";
 import { SignupComponent } from "./components/signup/signup.component";
+import { LoginComponent } from "./components/login/login.component";
 import { UiSwitchModule } from 'angular2-ui-switch';
 import {DropdownModule, CalendarModule} from 'primeng/primeng';
 import { RatingModule } from 'ng2-rating';
 import { ChartModule } from 'angular2-chartjs';
+import { AccountsModule } from 'angular2-meteor-accounts-ui';
+
 
 const appRoutes: Routes = [
   { path: 'pest/:id/suggestions', component: PestSuggestionsComponent },
@@ -47,6 +50,7 @@ const appRoutes: Routes = [
   { path: 'pestmap', component: PestMapComponent },
   { path: 'home', component: HomeComponent },
   { path: 'signup', component: SignupComponent },
+  { path: 'login', component: LoginComponent },
   { path: '', component: LandingComponent },
  /* { path: '',
     redirectTo: '/',
@@ -65,6 +69,7 @@ const appRoutes: Routes = [
     BottomBarComponent,
     LandingComponent,
     SignupComponent,
+    LoginComponent,
     NewsfeedComponent,
     PestDataComponent,
     PestFormComponent,
@@ -98,6 +103,7 @@ const appRoutes: Routes = [
     ChartModule,
     DropdownModule,
     ReactiveFormsModule,
+    AccountsModule,    
     AgmCoreModule.forRoot({
       apiKey: MapKey
     }),

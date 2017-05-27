@@ -30,6 +30,7 @@
     "angular2-chartjs": "^0.2.0",
     "angular2-google-maps": "^0.17.0",
     "angular2-meteor": "^0.7.1",
+    "angular2-meteor-accounts-ui": "^1.0.0",
     "angular2-meteor-polyfills": "^0.1.1",
     "angular2-meteor-tests-polyfills": "^0.0.2",
     "angular2-ui-switch": "^1.2.0",
