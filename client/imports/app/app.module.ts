@@ -49,7 +49,7 @@ const appRoutes: Routes = [
   { path: 'settings', component: SettingsComponent, canActivate: ['canActivateForLoggedIn'] },
   { path: 'publishspotting', component: PestFormComponent, canActivate: ['canActivateForLoggedIn'] },
   { path: 'pestmap', component: PestMapComponent, canActivate: ['canActivateForLoggedIn'] },
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent, canActivate: ['canActivateForLoggedIn'] },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   { path: '', component: LandingComponent },
