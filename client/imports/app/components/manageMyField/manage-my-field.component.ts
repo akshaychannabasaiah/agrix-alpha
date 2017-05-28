@@ -1,24 +1,37 @@
 import { Component, OnInit } from "@angular/core";
 import template from "./manage-my-field.component.html";
 import style from "./manage-my-field.component.scss";
-import { FieldDataService } from "../../services/field-data.service";
-import { Observable } from "rxjs";
 
+import { Observable } from "rxjs";
 import { Field } from "../../../../../both/models/field.model";
-import { FieldCollection } from "../../../../../both/collections/field.collection";
+import { FarmerService } from "../../services/farmer-data.service";
+import { Farmer } from "../../../../../both/models/farmer.model";
+import { FarmerCollection } from "../../../../../both/collections/farmer.collection";
+import { InjectUser } from 'angular2-meteor-accounts-ui';
+
+import { PestData } from "../../../../../both/models/pestData.model";
+import { PestDataCollection } from "../../../../../both/collections/pestData.collection";
+import { PestMapDataService } from "../../services/pestMap-data.service";
+import {Router} from '@angular/router';
 
 @Component({
   selector: "manage-my-field",
   template,
   styles: [ style ]
 })
+
+@InjectUser('user')
 export class ManageFieldComponent implements OnInit {
+  farmerData: Observable<Farmer[]>; 
+  user: Meteor.User;
+  currentFarmer: Farmer;
+  fieldData: Field[];
+  pestData: Observable<PestData[]>;
   processing : boolean = true;
   centerLat: number = 20;
   centerLong: number = 20;
   type: string = "doughnut";
   compName: string;
-  fetchData: Observable<Field[]>;
   data: any = {
     datasets: [{
       data: [],
@@ -28,6 +41,12 @@ export class ManageFieldComponent implements OnInit {
     labels: [],
     
   };
+   icons: any = {
+    'weed': '/images/weed_pin.png',
+    'bug': '/images/bug_pin.png',
+    'warning': '/images/warning_pin.png',
+    'fungi': '/images/fungi_pin.png',
+  }
 
   options: any = {
         legend: {
@@ -38,102 +57,51 @@ export class ManageFieldComponent implements OnInit {
         }
 };
 
-/*
-fields: any[]=[
-    {
-        id: 0,
-        crop: 'Barley',
-        name: 'Field 1',
-        size: 87,
-        lat: 35.00,
-        long: 45.00,
-        boundaries: [
-          { lat: 30,  lng: 40 },
-          { lat: 30,  lng: 50 },
-          { lat: 40, lng: 50 },
-          { lat: 40, lng: 40 },
-          { lat: 30,  lng: 40 }
-        ],
-        color: '#E91E63'
-    },
-    {
-        id: 1,
-        crop: 'Maize',
-        size: 73,
-        name: 'Field 2',
-        lat: 35.00,
-        long: 47.00,
-        boundaries: [
-          { lat: 20,  lng: 40 },
-          { lat: 20,  lng: 40 },
-          { lat: 30, lng: 40 },
-          { lat: 30, lng: 30 },
-          { lat: 20,  lng: 30 }
-        ],
-        color: '#9C27B0'
-    },
-    {
-        id: 2,
-        name: 'Field 3',
-        crop: 'Beets',
-        size: 13,
-        lat: 35.00,
-        long: 46.00,
-        boundaries: [
-          { lat: 10,  lng: 20 },
-          { lat: 10,  lng: 30 },
-          { lat: 20, lng: 30 },
-          { lat: 20, lng: 20 },
-          { lat: 20,  lng: 20 }
-        ],
-        color: '#009688'
-    },
-    {
-        id: 3,
-        name: 'Field 4',
-        crop: 'Wheat',
-        size: 68,
-        lat: 35.00,
-        long: 49.00,
-        boundaries: [
-          { lat: 10,  lng: 20 },
-          { lat: 10,  lng: 30 },
-          { lat: 20, lng: 30 },
-          { lat: 20, lng: 20 },
-          { lat: 20,  lng: 20 }
-        ],
-        color: '#FF9800'
-    },
-  ];*/
   
-  colors: any = ['#E91E63', '#9C27B0', '#009688', '#FF9800'] 
+  colors: any = ['#E91E63', '#9C27B0', '#009688', '#FF9800', '#2196F3', '#3F51B5', '#FFEB3B'] 
 
 
-  constructor(private fieldDataService: FieldDataService) {
+  constructor(public _router: Router, private pestMapDataService: PestMapDataService, private farmerService: FarmerService) {
     this.compName = "Manage Fields";
     
 
   }
 
   ngOnInit() {
-   this.fetchData = this.fieldDataService.getData().zone();
-    this.fetchData.subscribe((fieldss) =>{
-    
-    fieldss.map((field, index) => {
-    this.data.datasets[0].backgroundColor[index] = this.colors[index % 4];
-    this.data.datasets[0].data.push(field.area);
-    this.data.labels.push(field.cropType + " " + field.area + "ha");
-    this.processing = false;
-    })
-      
-  });
-    /*
-    this.fields.map( (field, index) => 
-    {
-      this.data.datasets[0].data.push(field.size);
-      this.data.labels.push(field.crop + " " + field.size + "ha");
-      this.data.datasets[0].backgroundColor.push(this.colors[index]); 
+this.pestData = this.pestMapDataService.getData().zone();
+this.farmerData = this.farmerService.getData().zone();
+   
+    this.farmerData.subscribe((data) => {
+        if(this.user !== undefined ){
+        this.currentFarmer = data.filter((d) => d.id = this.user.profile.id)[0];
+        this.centerLat = this.currentFarmer.centerLat;
+        this.centerLong = this.currentFarmer.centerLong;
+        this.fieldData = this.currentFarmer.fields;
+        this.fieldData.map((field, index) => {
+            this.data.datasets[0].backgroundColor[index] = this.colors[index % 7];
+            this.data.datasets[0].data.push(field.area);
+            this.data.labels.push(field.cropType + " " + field.area + "ha");
+            this.processing = false;
+          })
+        }        
     });
-    this.processing = false;*/
+   
+
+  }
+
+   clicked(type: string){
+    if(type == 'bug'){
+      this._router.navigateByUrl('pest/' + '0');
+    }
+    else if(type == 'fungi'){
+      this._router.navigateByUrl('pest/' + '1');
+    }
+    else if(type == 'weed'){
+      this._router.navigateByUrl('pest/' + '2');
+    }
+    else {
+      this._router.navigateByUrl('pest/' + '3');
+    }
+
   }
 }
