@@ -54,8 +54,8 @@ export class HomeComponent implements OnInit {
     this.farmerData.subscribe((data) => {
         if(this.user !== undefined ){
         this.currentFarmer = data.filter((d) => d.id = this.user.profile.id)[0];
-        this.centerLat = this.currentFarmer.fields[0].centerLat;
-        this.centerLong = this.currentFarmer.fields[0].centerLong;
+        this.centerLat = this.currentFarmer.centerLat;
+        this.centerLong = this.currentFarmer.centerLong;
         this.fieldData = this.currentFarmer.fields;
         }        
     });
