@@ -1,8 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import { Observable } from "rxjs";
 import { PestMapDataService } from "../../services/pestMap-data.service";
-import { PestLocation } from "../../../../../both/models/pestLocation.model";
-import { PestLocationCollection } from "../../../../../both/collections/pestLocation.collection";
+import { PestData } from "../../../../../both/models/pestData.model";
+import { PestDataCollection } from "../../../../../both/collections/pestData.collection";
 import template from "./pestMap.component.html";
 import style from "./pestMap.component.scss";
 
@@ -14,18 +14,21 @@ import style from "./pestMap.component.scss";
 
 export class PestMapComponent implements OnInit {
   compName: string;
-  data: Observable<PestLocation[]>;
+  data: Observable<PestData[]>;
   centerLat = 0;
   centerLong = 0;
   processing: Boolean = true;
-  formdata: PestLocation;
-  initdata: PestLocation = {
+  formdata: PestData;
+  initdata: PestData = {
     name:'',
+    type: 'weed',
     lat: undefined,
     long: undefined,
     radius: undefined,
     gradient: 25,
-    opacity: undefined
+    opacity: undefined,
+    field: {},
+    date: new Date(),
   };
 
   constructor(private pestMapDataService: PestMapDataService) {
@@ -49,7 +52,7 @@ export class PestMapComponent implements OnInit {
     this.formdata.radius = data.rad;
     this.formdata.opacity = data.op;
     this.formdata.gradient = 25;
-    PestLocationCollection.insert(this.formdata);
+  //  PestLocationCollection.insert(this.formdata);
     this.formdata = this.initdata;
   }
 
