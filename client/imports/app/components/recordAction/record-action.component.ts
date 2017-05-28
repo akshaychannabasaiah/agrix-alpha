@@ -109,30 +109,18 @@ export class RecordActionComponent implements OnInit {
     this.formdata.pesticide = data.pesticide;
     this.formdata.date = data.date;
 
-    data.field.actions.push({
-      'actionType': this.formdata.actionType,
-      'cropType': this.formdata.cropType,
-      'pest': this.formdata.pest,
-      'pesticide': this.formdata.pesticide,
-      'date': this.formdata.date,
-      'comments': this.formdata.comments,
-      'amount': this.formdata.amount,
-      'price': this.formdata.price,
-      'rating': this.formdata.rating
-    });
-
-    let action: Action = {
-      'actionType': this.formdata.actionType,
-      'cropType': this.formdata.cropType,
-      'pest': this.formdata.pest,
-      'pesticide': this.formdata.pesticide,
-      'date': this.formdata.date,
-      'comments': this.formdata.comments,
-      'amount': this.formdata.amount,
-      'price': this.formdata.price,
-      'rating': this.formdata.rating
+      let action: Action = {
+      actionType: this.formdata.actionType,
+      cropType: this.formdata.cropType,
+      pest: this.formdata.pest,
+      pesticide: this.formdata.pesticide,
+      date: this.formdata.date,
+      comments: this.formdata.comments,
+      amount: this.formdata.amount,
+      price: this.formdata.price,
+      rating: this.formdata.rating
     };
-    MeteorObservable.call("RecordActionToDB", this.user.profile.id, data.field.name, data.field.actions);
+    MeteorObservable.call("RecordActionToDB", this.user.profile.id, data.field.name, action);
 
 
     this.published = true;
