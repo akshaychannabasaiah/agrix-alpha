@@ -5,8 +5,11 @@
 <div id="map">
 <h3 *ngIf="processing">Loading map....</h3>  
 
-<sebm-google-map *ngIf="!processing" [latitude]="centerLat" [longitude]="centerLong">
-<sebm-google-map-marker *ngIf="published" [latitude]="formdata.lat" [longitude]="formdata.long" iconUrl="/images/weed_map.png"></sebm-google-map-marker> 
+<sebm-google-map [zoom]="12" *ngIf="!processing" [mapTypeControl]="enabled" [latitude]="centerLat" [longitude]="centerLong">
+    <sebm-google-map-marker *ngIf="formdata.field" [latitude]="formdata.field.centerLat" [longitude]="formdata.field.centerLong" iconUrl={{icons[formdata.type]}} ></sebm-google-map-marker> 
+<li *ngFor="let d of fieldData">
+    <sebm-map-polygon [paths]="d.boundaries"></sebm-map-polygon>
+</li>
 </sebm-google-map>
 </div>
 
