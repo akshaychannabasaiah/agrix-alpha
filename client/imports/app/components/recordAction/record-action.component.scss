@@ -41,7 +41,7 @@ h1{
     align-self: center;
 
     span{
-        width: 30%;
+        width: 70%;
         display: inline-block;
         padding: 5px;
         background-color: $secondary-color;
@@ -143,7 +143,7 @@ flex-direction: column;
                 cursor: pointer;
                 font-size: 15px;
                 color: $font-color;
-                width: 40%
+                width: 60%
             }
     }
 }

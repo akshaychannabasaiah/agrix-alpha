@@ -55,7 +55,7 @@ export class PestFormComponent implements OnInit {
   selectedStyle:any = {border: '3px solid #f24964' };
   styles:any=[{},{},{},{}];
   types:string[]=['weed','bug','fungi','warning'];
-
+  type: number;
   fieldsSelection : SelectItem[];
 
 
@@ -102,6 +102,7 @@ export class PestFormComponent implements OnInit {
   }
 
   typeSelected(id: number){
+    this.type=id;
     this.formdata.type = this.types[id];
     this.styles=[{},{},{},{}];
     this.styles[id]=this.selectedStyle;
@@ -109,7 +110,10 @@ export class PestFormComponent implements OnInit {
 
   clicked(id){
     if(id == 1){
-      this._router.navigateByUrl('pest/1/suggestions');
+      this._router.navigateByUrl('pest/' + this.type +'/suggestions');
+    }
+    else{
+      this._router.navigateByUrl('consultant');
     }
   }
 }

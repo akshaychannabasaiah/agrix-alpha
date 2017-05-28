@@ -172,7 +172,13 @@ export class RecordActionComponent implements OnInit {
     else {
       this._router.navigateByUrl('pest/' + '3');
     }
+   }
 
+    btnClicked(id){
+      if(id == 1){
+      this._router.navigateByUrl('pest/' + 1 +'/suggestions');
+    }
+    }
   
-  }
+  
 }
