@@ -8,6 +8,14 @@ import { SelectItem } from 'primeng/primeng';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 
+import { FarmerService } from "../../services/farmer-data.service";
+import { Farmer } from "../../../../../both/models/farmer.model";
+import { FarmerCollection } from "../../../../../both/collections/farmer.collection";
+import { Field } from "../../../../../both/models/field.model";
+import { InjectUser } from 'angular2-meteor-accounts-ui';
+import { Observable } from "rxjs";
+
+@InjectUser('user')
 @Component({
   selector: "pest-form",
   template,
@@ -21,9 +29,19 @@ export class PestFormComponent implements OnInit {
   centerLong = 0;
   processing: Boolean = false;
   formdata: PestData;
+  farmerData: Observable<Farmer[]>; 
+  user: Meteor.User;
+  currentFarmer: Farmer;
+  icons: any = {
+    'weed': '/images/weed_pin.png',
+    'bug': '/images/bug_pin.png',
+    'warning': '/images/warning_pin.png',
+    'fungi': '/images/fungi_pin.png',
+  }
+   fieldData: Field[];
   initdata: PestData = {
     name:'',
-    type: '',
+    type: 'weed',
     lat: undefined,
     long: undefined,
     radius: undefined,
@@ -61,30 +79,41 @@ export class PestFormComponent implements OnInit {
   fieldsSelection : SelectItem[];
 
 
-  constructor(public _router: Router) {
+  constructor(public _router: Router, private farmerService: FarmerService) {
     this.compName = "Publish Spotting";
     this.formdata = this.initdata;
     this.fieldsSelection = [];
-    this.fieldsSelection.push({
-      label: 'Super Field', value: this.fields[0]
-    });
-    this.fieldsSelection.push({
-      label: 'Mega Field', value: this.fields[1]
-    });
-    this.fieldsSelection.push({
-      label: 'A Field', value: this.fields[2]
-    });
+    
 
   }
 
   ngOnInit() {
+    this.farmerData = this.farmerService.getData().zone();
+   
+    this.farmerData.subscribe((data) => {
+        if(this.user !== undefined ){
+        this.currentFarmer = data.filter((d) => d.id = this.user.profile.id)[0];
+        this.centerLat = this.currentFarmer.centerLat;
+        this.centerLong = this.currentFarmer.centerLong;
+        this.fieldData = this.currentFarmer.fields;
+        this.fieldData.map((f) => {
+          this.fieldsSelection.push({
+              label: f.name, value: f
+              });
+          }); 
+        }        
+    });
+    this.processing = false;
+  
+
+    
   }
 
   addSpotting(data){
     this.formdata.name = data.pestname;
-    this.formdata.lat = data.field.lat;
-    this.formdata.long = data.field.long;
-    this.formdata.radius = 25000;
+    this.formdata.lat = data.field.centerLat;
+    this.formdata.long = data.field.centerLong;
+    this.formdata.radius = 250;
     this.formdata.opacity = 0.5;
     this.formdata.gradient = 25;
     this.formdata.date = data.date;

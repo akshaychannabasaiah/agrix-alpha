@@ -4,8 +4,11 @@
 <div id="map">
 <h3 *ngIf="processing"><i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>Loading map....</h3>  
 
-<sebm-google-map *ngIf="!processing" [latitude]="centerLat" [longitude]="centerLong">
-<li *ngFor="let d of fetchData | async; let i = index;">
+<sebm-google-map [zoom]="12" [mapTypeControl]="enabled" *ngIf="!processing" [latitude]="centerLat" [longitude]="centerLong">
+<li *ngFor="let d of pestData | async">
+    <sebm-google-map-marker [latitude]="d.lat" [longitude]="d.long" iconUrl={{icons[d.type]}} (markerClick)="clicked(d.type)"></sebm-google-map-marker> 
+    </li>
+<li *ngFor="let d of fieldData; let i = index;">
     <sebm-map-polygon [paths]="d.boundaries" [fillColor]="data.datasets[0].backgroundColor[i]"></sebm-map-polygon>
 </sebm-google-map>
 </div>
