@@ -5,4 +5,6 @@ export interface Farmer {
   cell: string;
   name: string;
   fields: Array<Field>;
+  centerLat: number;
+  centerLong: number;
 }
