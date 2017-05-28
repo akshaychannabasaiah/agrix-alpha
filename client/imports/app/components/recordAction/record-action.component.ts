@@ -16,22 +16,23 @@ import { InjectUser } from 'angular2-meteor-accounts-ui';
 import { Observable } from "rxjs";
 import { Pest } from "../../../../../both/models/pest.model";
 import { Action } from "../../../../../both/models/action.model";
+import { MeteorObservable } from "meteor-rxjs/dist";
 
 
 @Component({
   selector: "record-action",
   template,
-  styles: [ style ]
+  styles: [style]
 })
 
 @InjectUser('user')
 export class RecordActionComponent implements OnInit {
   published: boolean = false;
-  cleared: boolean = false; 
+  cleared: boolean = false;
   compName: string;
   data: Observable<PestData[]>;
   user: Meteor.User;
-  farmerData: Observable<Farmer[]>; 
+  farmerData: Observable<Farmer[]>;
   centerLat = 0;
   centerLong = 0;
   currentFarmer: Farmer;
@@ -39,26 +40,26 @@ export class RecordActionComponent implements OnInit {
   processing: Boolean = false;
   formdata: Action;
   initdata: Action = {
-    actionType:'Pesticide Spray',
+    actionType: 'Pesticide Spray',
     cropType: '',
     pest: '',
     amount: undefined,
     pesticide: '',
-    comments:'',
+    comments: '',
     rating: undefined,
     price: undefined,
     date: new Date(),
   };
   color = "#9C27B0";
-   fieldData: Field[];
-   icons: any = {
+  fieldData: Field[];
+  icons: any = {
     'weed': '/images/weed_pin.png',
     'bug': '/images/bug_pin.png',
     'warning': '/images/warning_pin.png',
     'fungi': '/images/fungi_pin.png',
   }
 
-  fieldsSelection : SelectItem[];
+  fieldsSelection: SelectItem[];
   pestSelection: SelectItem[];
 
   constructor(private pestMapDataService: PestMapDataService, private pestService: PestService, public _router: Router, private farmerService: FarmerService) {
@@ -73,32 +74,32 @@ export class RecordActionComponent implements OnInit {
     this.farmerData = this.farmerService.getData().zone();
     this.pests = this.pestService.getData().zone();
     this.farmerData.subscribe((data) => {
-        if(this.user !== undefined ){
+      if (this.user !== undefined) {
         this.currentFarmer = data.filter((d) => d.id === this.user.profile.id)[0];
         this.centerLat = this.currentFarmer.centerLat;
         this.centerLong = this.currentFarmer.centerLong;
         this.fieldData = this.currentFarmer.fields;
         this.fieldData.map((f) => {
           this.fieldsSelection.push({
-              label: f.name, value: f
-              });
-          }); 
-        }        
+            label: f.name, value: f
+          });
+        });
+      }
     });
 
     this.pests.subscribe((pest) => {
       pest.map((f) => {
-          this.pestSelection.push({
-              label: f.name, value: f.name
-              });
-          });
+        this.pestSelection.push({
+          label: f.name, value: f.name
+        });
+      });
     });
     this.processing = false;
-  
+
 
   }
 
-  addSpotting(data){
+  addSpotting(data) {
     this.formdata.cropType = data.field.cropType;
     this.formdata.pest = data.pest;
     this.formdata.rating = data.rating;
@@ -110,69 +111,48 @@ export class RecordActionComponent implements OnInit {
 
     data.field.actions.push({
       'actionType': this.formdata.actionType,
-          'cropType' : this.formdata.cropType,
-          'pest': this.formdata.pest,
-          'pesticide': this.formdata.pesticide,
-          'date': this.formdata.date,
-          'comments': this.formdata.comments,
-          'amount': this.formdata.amount,
-          'price': this.formdata.price,
-          'rating': this.formdata.rating
+      'cropType': this.formdata.cropType,
+      'pest': this.formdata.pest,
+      'pesticide': this.formdata.pesticide,
+      'date': this.formdata.date,
+      'comments': this.formdata.comments,
+      'amount': this.formdata.amount,
+      'price': this.formdata.price,
+      'rating': this.formdata.rating
     });
 
-   /* FarmerCollection.update(
-      { 'id': this.user.profile.id, 'fields.centerLat': data.field.centerLat },
-      {
-        $push: 
-        {
-         'fields.$.actions' : 
-         {
-          'actionType': this.formdata.actionType,
-          'cropType' : this.formdata.cropType,
-          'pest': this.formdata.pest,
-          'pesticide': this.formdata.pesticide,
-          'date': this.formdata.date,
-          'comments': this.formdata.comments,
-          'amount': this.formdata.amount,
-          'price': this.formdata.price,
-          'rating': this.formdata.rating
-         }
-        }
-      },
-      function (err, result) {
-    console.log(err, result);
-  }
-    );*/
+    let action: Action = {
+      'actionType': this.formdata.actionType,
+      'cropType': this.formdata.cropType,
+      'pest': this.formdata.pest,
+      'pesticide': this.formdata.pesticide,
+      'date': this.formdata.date,
+      'comments': this.formdata.comments,
+      'amount': this.formdata.amount,
+      'price': this.formdata.price,
+      'rating': this.formdata.rating
+    };
+    MeteorObservable.call("RecordActionToDB", this.user.profile.id, data.field.name, data.field.actions);
 
-    FarmerCollection.update(
-    { 'id': this.user.profile.id, 'fields.centerLat': data.field.centerLat },
-    {
-      $set: {
-              'fields.$.actions': data.field.actions
-    }
-    },
-    {
-       upsert: true,      
-      });
 
     this.published = true;
   }
 
 
-   clicked(type: string){
-    if(type == 'bug'){
+  clicked(type: string) {
+    if (type == 'bug') {
       this._router.navigateByUrl('pest/' + '0');
     }
-    else if(type == 'fungi'){
+    else if (type == 'fungi') {
       this._router.navigateByUrl('pest/' + '1');
     }
-    else if(type == 'weed'){
+    else if (type == 'weed') {
       this._router.navigateByUrl('pest/' + '2');
     }
     else {
       this._router.navigateByUrl('pest/' + '3');
     }
 
-  
+
   }
 }
