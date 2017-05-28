@@ -84,12 +84,10 @@ export class Main {
       )
     }
     else {
-      console.log("Else reached");
       let newPesticideArray = PestCollection.find({ name: action.pest }).fetch()[0].pesticidesUsed;
       var found = 0;
       newPesticideArray.forEach((pesticide: Pesticide) => {
         if (pesticide.name == action.pesticide) {
-          console.log("Pesticide match found");
           pesticide.averageUsage = ((pesticide.averageUsage * pesticide.usageCount) + action.amount) / (pesticide.usageCount + 1);
           pesticide.currentPrice = ((pesticide.currentPrice * pesticide.usageCount) + action.price) / (pesticide.usageCount + 1);
           pesticide.rating = ((pesticide.rating * pesticide.usageCount) + action.rating) / (pesticide.usageCount + 1);
@@ -98,7 +96,7 @@ export class Main {
         }
       })
       if (found == 0) {
-        console.log(newPesticideArray.push(
+        newPesticideArray.push(
           {
             averageUsage: action.amount,
             currentPrice: action.amount,
@@ -106,10 +104,9 @@ export class Main {
             rating: action.rating,
             usageCount: 1
           }
-        ));
+        );
       }
       PestCollection.update({ name: action.pest }, { $set: { pesticidesUsed: newPesticideArray } });
-      console.log(PestCollection.findOne({}).pesticidesUsed.length);
     }
   }
 
