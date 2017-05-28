@@ -70,13 +70,13 @@ export class HomeComponent implements OnInit {
   }
 
   clicked(type: string){
-    if(type == 'weed'){
+    if(type == 'bug'){
       this._router.navigateByUrl('pest/' + '0');
     }
-    else if(type == 'bug'){
+    else if(type == 'fungi'){
       this._router.navigateByUrl('pest/' + '1');
     }
-    else if(type == 'fungi'){
+    else if(type == 'weed'){
       this._router.navigateByUrl('pest/' + '2');
     }
     else {

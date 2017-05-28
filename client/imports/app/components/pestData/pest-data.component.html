@@ -3,9 +3,12 @@
 <div id="pestdata">
 <div id="map">
 <h3 *ngIf="processing">Loading map....</h3>  
-<sebm-google-map *ngIf="!processing" [latitude]="centerLat" [longitude]="centerLong">
+<sebm-google-map *ngIf="!processing" [zoom]="12" [latitude]="centerLat" [longitude]="centerLong">
     <li *ngFor="let d of data | async">
-    <sebm-google-map-circle [latitude]="d.lat" [longitude]="d.long" [radius]="50000" [fillColor]="LightCoral" [fillOpacity]="d.opacity"></sebm-google-map-circle>
+    <sebm-google-map-circle *ngIf="d.type === type[id]" [latitude]="d.lat" [longitude]="d.long" [radius]="50000" [fillColor]="fillcolor" [fillOpacity]="d.opacity"></sebm-google-map-circle>
+    </li>
+     <li *ngFor="let d of fieldData">
+    <sebm-map-polygon [paths]="d.boundaries"></sebm-map-polygon>
     </li>
 </sebm-google-map>
 </div>
