@@ -47,7 +47,7 @@ export class PestDataComponent implements OnInit {
     },
     {
       id: 1,
-      name: 'White Mildew',
+      name: 'Army Worm',
       icon: "/images/armyworm.jpg",
       info1: "first signs on the lower leaves",
       info2: "white, powdery appearance",
@@ -55,8 +55,8 @@ export class PestDataComponent implements OnInit {
     },
     {
       id: 2,
-      name: 'Rough Pigweed',
-      icon: "/images/aphid.jpg",
+      name: 'Aphid',
+      icon: "/images/pollen.jpg",
       info1: "1-year growth cycle",
       info2: "height 15 - 80 cm",
       info3: "prevented best by crop rotation",
@@ -64,7 +64,7 @@ export class PestDataComponent implements OnInit {
     {
       id: 3,
       name: 'Frost',
-      icon: "/images/corn_weevil.jpg",
+      icon: "/images/aphid.jpg",
       info1: "damages leaves and stems",
       info2: "most damages occur on ground level",
       info3: "increased occurrence due to climate change",

@@ -94,8 +94,6 @@ export class RecordActionComponent implements OnInit {
           });
     });
     this.processing = false;
-  
-
   }
 
   addSpotting(data){

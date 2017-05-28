@@ -1,21 +1,28 @@
 <top-bar [title]="compName"></top-bar>
 <div id="pest-suggestions">
-<img src={{pestData[0].icon}} />
+<img src={{pestData[id].icon}} />
 
 <div id="sort-container">
     <p> Sort by </p>
     <div>
-    <a (click)="typeSelected(0)"><img src="images/rating_icon.png"/></a>
-    <a (click)="typeSelected(1)"><img src="images/cost_icon.png"/></a>
-    <a (click)="typeSelected(2)"><img src="images/freq_icon.png"/></a>
+    <a (click)="typeSelected(0)"><img [ngStyle]="styles[0]" src="images/rating_icon.png"/></a>
+    <a (click)="typeSelected(1)"><img [ngStyle]="styles[1]" src="images/cost_icon.png"/></a>
+    <a (click)="typeSelected(2)"><img [ngStyle]="styles[2]" src="images/freq_icon.png"/></a>
     </div>
 </div>
 
-<div id="pesticides-container">
-<li *ngFor="let p of sortedPesticides">
-    <div id="pesticide">{{p.name}} <rating [float]="true" [(ngModel)]="p.rating" [readonly]="true" [fullIcon]="iconsToDisplay[0][displayingIcon]" [emptyIcon]="iconsToDisplay[1][displayingIcon]"></rating>
-</li>
+<div *ngIf="!processing" id="pesticides-container">
+
+<div *ngIf="sortType[0]">
+<chart *ngIf="!processing" [type]="type" [data]="chartData" [options]="options" ></chart>
+</div>
+<div *ngIf="sortType[1]">
+<chart *ngIf="!processing" [type]="type" [data]="chartData" [options]="options" ></chart>
+</div>
+<div *ngIf="sortType[2]">
+<chart *ngIf="!processing" [type]="type" [data]="chartData" [options]="options" ></chart>
+</div>
 </div>
 
-</div>
+</div> 
 <bottom-bar></bottom-bar>
