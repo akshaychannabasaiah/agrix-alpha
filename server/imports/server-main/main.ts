@@ -49,6 +49,7 @@ export class Main {
 
     if (FarmerCollection.find({}).cursor.count() === 0) {
       FakeDB.initData();
+      this.processLoadedData();
     }
 
   }
@@ -58,54 +59,56 @@ export class Main {
     farmerData.fetch().forEach((farmer: Farmer) => {
       farmer.fields.forEach((field: Field) => {
         field.actions.forEach((action: Action) => {
-          if (PestCollection.find({ name: action.pest }).cursor.count() === 0) {
-            let pesticideArray = Array<Pesticide>();
-            pesticideArray.push(
-              {
-                averageUsage: action.amount,
-                currentPrice: action.price,
-                name: action.pesticide,
-                rating: action.rating,
-                usageCount: 1
-              }
-            )
-            PestCollection.insert({
-              name: action.pest,
-              pesticidesUsed: pesticideArray
-            }
-            )
-          }
-          else {
-            let newPesticideArray = PestCollection.find({ name: action.pest }).fetch()[0].pesticidesUsed;
-            var found = 0;
-            newPesticideArray.forEach((pesticide: Pesticide) => {
-              if (pesticide.name == action.pesticide) {
-                pesticide.averageUsage = ((pesticide.averageUsage * pesticide.usageCount) + action.amount) / pesticide.usageCount + 1;
-                pesticide.currentPrice = ((pesticide.currentPrice * pesticide.usageCount) + action.price) / pesticide.usageCount + 1;
-                pesticide.rating = ((pesticide.rating * pesticide.usageCount) + action.rating) / pesticide.usageCount + 1;
-                pesticide.usageCount = pesticide.usageCount + 1;
-                found = 1;
-              }
-            })
-            if (found == 0) {
-              newPesticideArray.push(
-                {
-                  averageUsage: action.amount,
-                  currentPrice: action.amount,
-                  name: action.pesticide,
-                  rating: action.rating,
-                  usageCount: 1
-                }
-              )
-            }
-            PestCollection.update({ pest: action.pest }, { $set: { pesticideArray: newPesticideArray } });
-          }
+          this.UpdateTableAfterActionAdded(action);
         });
       });
     });
-
   }
+  UpdateTableAfterActionAdded(action: Action): void {
 
+    if (PestCollection.find({ name: action.pest }).cursor.count() === 0) {
+      let pesticideArray = Array<Pesticide>();
+      pesticideArray.push(
+        {
+          averageUsage: action.amount,
+          currentPrice: action.price,
+          name: action.pesticide,
+          rating: action.rating,
+          usageCount: 1
+        }
+      )
+      PestCollection.insert({
+        name: action.pest,
+        pesticidesUsed: pesticideArray
+      }
+      )
+    }
+    else {
+      let newPesticideArray = PestCollection.find({ name: action.pest }).fetch()[0].pesticidesUsed;
+      var found = 0;
+      newPesticideArray.forEach((pesticide: Pesticide) => {
+        if (pesticide.name == action.pesticide) {
+          pesticide.averageUsage = ((pesticide.averageUsage * pesticide.usageCount) + action.amount) / (pesticide.usageCount + 1);
+          pesticide.currentPrice = ((pesticide.currentPrice * pesticide.usageCount) + action.price) / (pesticide.usageCount + 1);
+          pesticide.rating = ((pesticide.rating * pesticide.usageCount) + action.rating) / (pesticide.usageCount + 1);
+          pesticide.usageCount = pesticide.usageCount + 1;
+          found = 1;
+        }
+      })
+      if (found == 0) {
+        newPesticideArray.push(
+          {
+            averageUsage: action.amount,
+            currentPrice: action.amount,
+            name: action.pesticide,
+            rating: action.rating,
+            usageCount: 1
+          }
+        );
+      }
+      PestCollection.update({ name: action.pest }, { $set: { pesticidesUsed: newPesticideArray } });
+    }
+  }
 
 }
 
