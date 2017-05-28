@@ -7,6 +7,7 @@ import { PestMapComponent } from "./components/pestMap/pestMap.component";
 import { PestMapDataService } from "./services/pestMap-data.service";
 import { FieldDataService } from "./services/field-data.service";
 import { FarmerService } from "./services/farmer-data.service";
+import { PestService } from "./services/pest.service";
 import { FormsModule,  
   ReactiveFormsModule  
 } from '@angular/forms';
@@ -99,6 +100,7 @@ export const ROUTES_PROVIDERS = [{
     PestMapDataService,
     FieldDataService,
     FarmerService,
+    PestService,
     ROUTES_PROVIDERS
   ],
   // Modules

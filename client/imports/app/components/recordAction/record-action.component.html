@@ -5,8 +5,14 @@
 <div id="map">
 <h3 *ngIf="processing">Loading map....</h3>  
 
-<sebm-google-map *ngIf="!processing" [latitude]="centerLat" [longitude]="centerLong">
-<sebm-google-map-marker *ngIf="published" [latitude]="formdata.lat" [longitude]="formdata.long" iconUrl="/images/weed_map.png"></sebm-google-map-marker> 
+<sebm-google-map [zoom]="12" [mapTypeControl]="enabled" *ngIf="!processing" [latitude]="centerLat" [longitude]="centerLong">
+    <li *ngFor="let d of fieldData">
+    <sebm-map-polygon [paths]="d.boundaries"></sebm-map-polygon>
+    </li>
+    <li *ngFor="let d of data | async">
+    <sebm-google-map-marker [latitude]="d.lat" [longitude]="d.long" iconUrl={{icons[d.type]}} (markerClick)="clicked(d.type)"></sebm-google-map-marker> 
+    </li>
+    <sebm-google-map-marker [latitude]="formdata.field.centerLat" [longitude]="formdata.field.centerLong" *ngIf="formdata.field" iconUrl="/images/choose.png"></sebm-google-map-marker>
 </sebm-google-map>
 </div>
 
@@ -31,11 +37,26 @@
           (ngSubmit)="addSpotting(f.value)"  
           >
 
+<label>Where and when?</label>
+
+<div class="field">    
+    <p-calendar name="date" [inputStyleClass]="inputs" placeholder="Date" [(ngModel)]="formdata.date"></p-calendar> 
+    </div>
+
+    <div class="field">  
+    <p-dropdown [style]="{'width':'200px'}" [(ngModel)]="formdata.field" [styleClass]="inputs" id="field" name="field" placeholder="Location" [options]="fieldsSelection"></p-dropdown>
+    </div>
+
+    <label>Pesticide details:</label>
+    <div class="field">  
+    <p-dropdown [style]="{'width':'200px'}" [(ngModel)]="formdata.pest" [styleClass]="inputs" id="pest" name="pest" placeholder="Pest" [options]="pestSelection"></p-dropdown>
+    </div>
+
       <div class="field">  
         <input type="text"  
-               id="pestName"  
+               id="pesticide"  
                placeholder="Product"  
-               name="pestname" [(ngModel)]="formdata.name" required>  
+               name="pesticide" [(ngModel)]="formdata.pesticide" required>  
       </div>
 
       
@@ -43,32 +64,27 @@
         <input type="text"  
                id="applier"  
                placeholder="Applier"  
-               name="pestname" [(ngModel)]="formdata.applier" required>  
+               name="applier" [(ngModel)]="formdata.applier" required>  
       </div>
 
          <div class="field">  
-        <input type="text"  
-               id="applier"  
+        <input type="number"  
+               id="amount"  
                placeholder="Amount [l/ha]"  
-               name="pestname" [(ngModel)]="formdata.amount" required>  
+               name="amount" [(ngModel)]="formdata.amount" required>  
       </div>
 
          <div class="field">  
-        <input type="text"  
-               id="applier"  
+        <input type="number"  
+               id="price"  
                placeholder="Price [€/l]"  
-               name="pestname" [(ngModel)]="formdata.price" required>  
+               name="price" [(ngModel)]="formdata.price" required>  
       </div>
 
-    <label>Where and when?</label>
-
-    <div class="field">  
-    <p-dropdown [style]="{'width':'200px'}" [(ngModel)]="formdata.field" [styleClass]="inputs" id="field" name="field" placeholder="Location" [options]="fieldsSelection"></p-dropdown>
-    </div>
-
-    <div class="field">    
-    <p-calendar name="date" [inputStyleClass]="inputs" placeholder="Date" [(ngModel)]="formdata.date"></p-calendar> 
-    </div>
+      <label>Pesticide rating:</label>
+          <div class="field">
+          <rating [float]="false" name="rating" [(ngModel)]="formdata.rating" [readonly]="false"></rating>
+          </div>
 
     <button id="submit" type="submit">Save</button>  
     </form>  

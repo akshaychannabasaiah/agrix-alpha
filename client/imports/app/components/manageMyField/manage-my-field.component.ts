@@ -73,7 +73,7 @@ this.farmerData = this.farmerService.getData().zone();
    
     this.farmerData.subscribe((data) => {
         if(this.user !== undefined ){
-        this.currentFarmer = data.filter((d) => d.id = this.user.profile.id)[0];
+        this.currentFarmer = data.filter((d) => d.id === this.user.profile.id)[0];
         this.centerLat = this.currentFarmer.centerLat;
         this.centerLong = this.currentFarmer.centerLong;
         this.fieldData = this.currentFarmer.fields;

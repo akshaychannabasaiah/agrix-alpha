@@ -15,13 +15,14 @@ import { Field } from "../../../../../both/models/field.model";
 import { InjectUser } from 'angular2-meteor-accounts-ui';
 import { Observable } from "rxjs";
 
-@InjectUser('user')
+
 @Component({
   selector: "pest-form",
   template,
   styles: [ style ]
 })
 
+@InjectUser('user')
 export class PestFormComponent implements OnInit {
   published: boolean = false;
   compName: string;
@@ -55,27 +56,6 @@ export class PestFormComponent implements OnInit {
   styles:any=[{},{},{},{}];
   types:string[]=['weed','bug','fungi','warning'];
 
-  fields: any[]=[
-    {
-        id: 0,
-        name: 'Field 1',
-        lat: 35.00,
-        long: 45.00
-    },
-    {
-        id: 1,
-        name: 'Field 2',
-        lat: 35.00,
-        long: 47.00
-    },
-    {
-        id: 2,
-        name: 'Field 3',
-        lat: 35.00,
-        long: 46.00
-    },
-  ];
-
   fieldsSelection : SelectItem[];
 
 
@@ -83,8 +63,6 @@ export class PestFormComponent implements OnInit {
     this.compName = "Publish Spotting";
     this.formdata = this.initdata;
     this.fieldsSelection = [];
-    
-
   }
 
   ngOnInit() {
@@ -92,7 +70,7 @@ export class PestFormComponent implements OnInit {
    
     this.farmerData.subscribe((data) => {
         if(this.user !== undefined ){
-        this.currentFarmer = data.filter((d) => d.id = this.user.profile.id)[0];
+        this.currentFarmer = data.filter((d) => d.id === this.user.profile.id)[0];
         this.centerLat = this.currentFarmer.centerLat;
         this.centerLong = this.currentFarmer.centerLong;
         this.fieldData = this.currentFarmer.fields;

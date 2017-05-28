@@ -30,14 +30,6 @@ export class HomeComponent implements OnInit {
   centerLong = 0;
   processing: Boolean = true;
   formdata: PestData;
- /* initdata: PestLocation = {
-    name:'',
-    lat: undefined,
-    long: undefined,
-    radius: undefined,
-    gradient: 25,
-    opacity: undefined
-  };*/
   fieldData: Field[];
   icons: any = {
     'weed': '/images/weed_pin.png',
@@ -60,7 +52,7 @@ export class HomeComponent implements OnInit {
    
     this.farmerData.subscribe((data) => {
         if(this.user !== undefined ){
-        this.currentFarmer = data.filter((d) => d.id = this.user.profile.id)[0];
+        this.currentFarmer = data.filter((d) => d.id === this.user.profile.id)[0];
         this.centerLat = this.currentFarmer.centerLat;
         this.centerLong = this.currentFarmer.centerLong;
         this.fieldData = this.currentFarmer.fields;
