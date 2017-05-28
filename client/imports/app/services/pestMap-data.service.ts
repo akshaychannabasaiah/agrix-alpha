@@ -1,17 +1,17 @@
 import { Injectable } from "@angular/core";
 import { ObservableCursor } from "meteor-rxjs";
-import { PestLocation } from "../../../../both/models/pestLocation.model";
-import { PestLocationCollection } from "../../../../both/collections/pestLocation.collection";
+import { PestData } from "../../../../both/models/pestData.model";
+import { PestDataCollection } from "../../../../both/collections/pestData.collection";
 
 @Injectable()
 export class PestMapDataService {
-  private data: ObservableCursor<PestLocation>;
+  private data: ObservableCursor<PestData>;
 
   constructor() {
-    this.data = PestLocationCollection.find({});
+    this.data = PestDataCollection.find({});
   }
 
-  public getData(): ObservableCursor<PestLocation> {
+  public getData(): ObservableCursor<PestData> {
     return this.data;
   }
 }
