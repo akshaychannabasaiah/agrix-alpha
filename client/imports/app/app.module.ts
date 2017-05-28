@@ -6,6 +6,7 @@ import { DemoDataService } from "./components/demo/demo-data.service";
 import { PestMapComponent } from "./components/pestMap/pestMap.component";
 import { PestMapDataService } from "./services/pestMap-data.service";
 import { FieldDataService } from "./services/field-data.service";
+import { FarmerService } from "./services/farmer-data.service";
 import { FormsModule,  
   ReactiveFormsModule  
 } from '@angular/forms';
@@ -37,17 +38,17 @@ import { AccountsModule } from 'angular2-meteor-accounts-ui';
 
 
 const appRoutes: Routes = [
-  { path: 'pest/:id/suggestions', component: PestSuggestionsComponent },
-  { path: 'pest/:id', component: PestDataComponent },
+  { path: 'pest/:id/suggestions', component: PestSuggestionsComponent, canActivate: ['canActivateForLoggedIn'] },
+  { path: 'pest/:id', component: PestDataComponent, canActivate: ['canActivateForLoggedIn']},
 //  { path: 'spotPest', component: SpotPestComponent },  
  // { path: 'pesticide/:id', component: PesticideComponent },
-  { path: 'manage', component: ManageFieldComponent },
-  { path: 'docplan', component: DocPlanComponent },
-  { path: 'record', component: RecordActionComponent },
-  { path: 'consultant', component: ConsultantComponent },
-  { path: 'settings', component: SettingsComponent },
-  { path: 'publishspotting', component: PestFormComponent },
-  { path: 'pestmap', component: PestMapComponent },
+  { path: 'manage', component: ManageFieldComponent, canActivate: ['canActivateForLoggedIn'] },
+  { path: 'docplan', component: DocPlanComponent, canActivate: ['canActivateForLoggedIn'] },
+  { path: 'record', component: RecordActionComponent, canActivate: ['canActivateForLoggedIn'] },
+  { path: 'consultant', component: ConsultantComponent, canActivate: ['canActivateForLoggedIn'] },
+  { path: 'settings', component: SettingsComponent, canActivate: ['canActivateForLoggedIn'] },
+  { path: 'publishspotting', component: PestFormComponent, canActivate: ['canActivateForLoggedIn'] },
+  { path: 'pestmap', component: PestMapComponent, canActivate: ['canActivateForLoggedIn'] },
   { path: 'home', component: HomeComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
@@ -57,6 +58,11 @@ const appRoutes: Routes = [
   },*/
   //{ path: '**', component: PageNotFoundComponent }
 ];
+
+export const ROUTES_PROVIDERS = [{
+  provide: 'canActivateForLoggedIn',
+  useValue: () => !! Meteor.userId()
+}];
 
 @NgModule({
   // Components, Pipes, Directive
@@ -91,7 +97,9 @@ const appRoutes: Routes = [
   providers: [
     DemoDataService,
     PestMapDataService,
-    FieldDataService
+    FieldDataService,
+    FarmerService,
+    ROUTES_PROVIDERS
   ],
   // Modules
   imports: [

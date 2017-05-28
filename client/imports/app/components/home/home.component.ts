@@ -2,6 +2,11 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 
 import { Observable } from "rxjs";
 import { PestMapDataService } from "../../services/pestMap-data.service";
+import { FarmerService } from "../../services/farmer-data.service";
+import { Farmer } from "../../../../../both/models/farmer.model";
+import { FarmerCollection } from "../../../../../both/collections/farmer.collection";
+import { Field } from "../../../../../both/models/field.model";
+import { InjectUser } from 'angular2-meteor-accounts-ui';
 import { PestLocation } from "../../../../../both/models/pestLocation.model";
 import { PestLocationCollection } from "../../../../../both/collections/pestLocation.collection";
 import {Router} from '@angular/router';
@@ -14,9 +19,11 @@ import style from "./home.component.scss";
   styles: [ style ]
 })
 
+@InjectUser('user')
 export class HomeComponent implements OnInit {
-   
-  
+  farmerData: Observable<Farmer[]>; 
+  user: Meteor.User;
+  currentFarmer: Farmer;
   compName: string;
   data: Observable<PestLocation[]>;
   centerLat = 0;
@@ -31,19 +38,28 @@ export class HomeComponent implements OnInit {
     gradient: 25,
     opacity: undefined
   };
+  fieldData: Field[];
 
-  constructor(private pestMapDataService: PestMapDataService, public _router: Router) {
+  constructor(private pestMapDataService: PestMapDataService, private farmerService: FarmerService, public _router: Router) {
     this.compName = "Agrix Alpha";
     this.formdata = this.initdata;
+   
   }
     
   ngOnInit() {
+    
     this.data = this.pestMapDataService.getData().zone();
-    this.data.subscribe((data) => {
-        this.processing = false;
-        this.centerLat = data[0].lat;
-        this.centerLong = data[0].long;
+    this.farmerData = this.farmerService.getData().zone();
+   
+    this.farmerData.subscribe((data) => {
+        if(this.user !== undefined ){
+        this.currentFarmer = data.filter((d) => d.id = this.user.profile.id)[0];
+        this.centerLat = this.currentFarmer.fields[0].centerLat;
+        this.centerLong = this.currentFarmer.fields[0].centerLong;
+        this.fieldData = this.currentFarmer.fields;
+        }        
     });
+    this.processing = false;
   }
 
   clicked(e){
