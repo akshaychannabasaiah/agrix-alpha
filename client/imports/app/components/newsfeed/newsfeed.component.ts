@@ -37,7 +37,7 @@ export class NewsfeedComponent implements OnInit {
   ];
 
   image: string[] =[
-    "images/bug_icon.png", "images/fungi_icon.png", "images/weed_icon.png", "images/warning_icon.png", 
+    "images/1.png", "images/2.png", "images/3.png", "images/4.png", 
   ];
 
   constructor(private _location: Location, public _router: Router) {
