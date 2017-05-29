@@ -91,7 +91,7 @@ export class PestFormComponent implements OnInit {
     this.formdata.name = data.pestname;
     this.formdata.lat = data.field.centerLat;
     this.formdata.long = data.field.centerLong;
-    this.formdata.radius = 2;
+    this.formdata.radius = 500;
     this.formdata.opacity = 0.2;
     this.formdata.gradient = 25;
     this.formdata.date = data.date;
