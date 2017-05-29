@@ -51,6 +51,14 @@ h1{
         padding: 3px;
         margin-right: 5px;
         text-align: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+
+        ul{
+            align-self: center;
+        }
     }
 
 

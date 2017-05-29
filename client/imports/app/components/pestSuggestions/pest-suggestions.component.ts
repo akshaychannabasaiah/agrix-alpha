@@ -118,7 +118,7 @@ return 0;
     if(id == 0){
       this.chartData.datasets[0].data = [];
       this.chartData.datasets[0].backgroundColor = [];
-      this.chartData.datasets[0].label = "Rating";
+      this.chartData.datasets[0].label = "Rating (out of 5)";
       this.chartData.labels = [];
       this.pesticidesByRating.map(p => {
         this.chartData.datasets[0].data.push(p.val);
@@ -129,7 +129,7 @@ return 0;
     else if(id == 1){
       this.chartData.datasets[0].data = [];
       this.chartData.datasets[0].backgroundColor = [];
-      this.chartData.datasets[0].label = "Price";
+      this.chartData.datasets[0].label = "Price €";
       this.chartData.labels = [];
       this.pesticidesByPrice.map(p => {
         this.chartData.datasets[0].data.push(p.val);
@@ -140,7 +140,7 @@ return 0;
     else if(id == 2){
       this.chartData.datasets[0].data = [];
       this.chartData.datasets[0].backgroundColor = [];
-      this.chartData.datasets[0].label = "Frequency";
+      this.chartData.datasets[0].label = "Frequency (usage count)";
       this.chartData.labels = [];
       this.pesticidesByFreq.map(p => {
         this.chartData.datasets[0].data.push(p.val);
@@ -173,7 +173,7 @@ return 0;
         this.pesticidesByPrice.sort(this.compareBy);
         this.chartData.datasets[0].data = [];
       this.chartData.datasets[0].backgroundColor = [];
-      this.chartData.datasets[0].label = "Rating";
+      this.chartData.datasets[0].label = "Rating (out of 5)";
       this.chartData.labels = [];
       this.pesticidesByRating.map(p => {
         this.chartData.datasets[0].data.push(p.val);

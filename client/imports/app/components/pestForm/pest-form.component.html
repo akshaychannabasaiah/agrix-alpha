@@ -44,14 +44,15 @@
       </div>
 
     <div class="field">  
-    <p-dropdown [(ngModel)]="formdata.field" [styleClass]="inputs" id="field" name="field" [style]="{'width':'200px'}" placeholder="Location" [options]="fieldsSelection"></p-dropdown>
+    <p-dropdown [(ngModel)]="formdata.field" [styleClass]="inputs" id="field" name="field" [style]="{'width':'200px'}" placeholder="Location" [options]="fieldsSelection" (required)="true"></p-dropdown>
     </div>
     <div class="field">    
-    <p-calendar name="date" placeholder="Date" [(ngModel)]="formdata.date"></p-calendar> 
+    <p-calendar (required)="true" name="date" placeholder="Date" [(ngModel)]="formdata.date"></p-calendar> 
     </div>
 
     <button id="submit" type="submit">Publish</button>  
     </form>  
   </div>  
 </div>
+
   <bottom-bar></bottom-bar>

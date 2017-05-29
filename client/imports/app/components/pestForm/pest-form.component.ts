@@ -74,11 +74,13 @@ export class PestFormComponent implements OnInit {
         this.centerLat = this.currentFarmer.centerLat;
         this.centerLong = this.currentFarmer.centerLong;
         this.fieldData = this.currentFarmer.fields;
+        
         this.fieldData.map((f) => {
           this.fieldsSelection.push({
               label: f.name, value: f
               });
-          }); 
+          });
+          this.formdata.field = this.fieldData[0]; 
         }        
     });
     this.processing = false;
