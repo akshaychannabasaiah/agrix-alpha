@@ -21,12 +21,12 @@ export class NewsfeedComponent implements OnInit {
     {
       id: 1,
       type: 'fungi',
-      details: 'White Mildew spotted 1.5 km away.' 
+      details: 'Army worm spotted 1.5 km away.' 
     },
     {
       id: 2,
       type: 'weed',
-      details: 'Rough pigweed spotten 4 km away.' 
+      details: 'Aphid spotten 4 km away.' 
     },
     {
       id: 3,

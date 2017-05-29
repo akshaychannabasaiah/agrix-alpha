@@ -56,7 +56,7 @@ export class PestDataComponent implements OnInit {
     {
       id: 2,
       name: 'Aphid',
-      icon: "/images/pollen.jpg",
+      icon: "/images/aphid.jpg",
       info1: "1-year growth cycle",
       info2: "height 15 - 80 cm",
       info3: "prevented best by crop rotation",
@@ -64,7 +64,7 @@ export class PestDataComponent implements OnInit {
     {
       id: 3,
       name: 'Frost',
-      icon: "/images/aphid.jpg",
+      icon: "/images/frost.jpg",
       info1: "damages leaves and stems",
       info2: "most damages occur on ground level",
       info3: "increased occurrence due to climate change",
