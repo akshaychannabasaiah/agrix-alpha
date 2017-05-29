@@ -7,7 +7,7 @@ import { Farmer } from "../../../both/models/farmer.model";
 import { Field } from "../../../both/models/field.model";
 import { FarmerCollection } from "../../../both/collections/farmer.collection";
 import { PestCollection } from "../../../both/collections/pest.collection";
-import { ObservableCursor } from "meteor-rxjs/dist";
+import { ObservableCursor, MeteorObservable } from "meteor-rxjs/dist";
 import { Action } from "../../../both/models/action.model";
 import { Pesticide } from "../../../both/models/pesticide.model";
 
@@ -16,10 +16,12 @@ import { PestData } from "../../../both/models/pestData.model";
 
 import { FieldCollection } from "../../../both/collections/field.collection";
 import { FakeDB } from "./populatedb";
+import { RecordActionMethods } from "../../../both/methods/recordAction.methods";
 
 export class Main {
   start(): void {
     this.initFakeData();
+    RecordActionMethods.initMethod();
   }
 
   initFakeData(): void {
@@ -58,13 +60,14 @@ export class Main {
     farmerData = FarmerCollection.find({});
     farmerData.fetch().forEach((farmer: Farmer) => {
       farmer.fields.forEach((field: Field) => {
-        field.actions.forEach((action: Action) => {
-          this.UpdateTableAfterActionAdded(action);
+        field.actions.forEach((action: Action) => { 
+          Main.UpdateTableAfterActionAdded(action);
+          // MeteorObservable.call("UpdateTableAfterActionAdded", action);
         });
       });
     });
   }
-  UpdateTableAfterActionAdded(action: Action): void {
+  static UpdateTableAfterActionAdded(action: Action): void {
 
     if (PestCollection.find({ name: action.pest }).cursor.count() === 0) {
       let pesticideArray = Array<Pesticide>();
