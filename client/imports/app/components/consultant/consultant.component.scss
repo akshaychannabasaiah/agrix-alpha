@@ -4,9 +4,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 135vh;
+    height: 155vh;
     position: relative;
-    top: 20px;
+    top: 30px;
     background-color: $primary-color;
 
        
@@ -17,7 +17,7 @@
                 padding: 10px;
                 cursor: pointer;
                 img{
-                    width: 60%;
+                    width: 40%;
                 }
                 p{
                     font-size: 15px;
@@ -27,8 +27,19 @@
                 button{
                     font-size: 15px;
                     padding: 5px;
-                    background-color: $secondary-color;
+                    border: none;
+                    background-color: $primary-color;
                     color: white;
+                    width: 20%;     
+                    height: 40px;   
+                    #two{
+                        width: 60%;
+                        height: 70%;
+                    }
+                    #one{
+                        width:25%;
+                        height:70%; 
+                    }
                 }
                 
                 }

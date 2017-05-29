@@ -42,7 +42,7 @@ export class PestFormComponent implements OnInit {
    fieldData: Field[];
   initdata: PestData = {
     name:'',
-    type: 'weed',
+    type: 'bug',
     lat: undefined,
     long: undefined,
     radius: undefined,
@@ -53,9 +53,9 @@ export class PestFormComponent implements OnInit {
   };
 
   selectedStyle:any = {border: '3px solid #f24964' };
-  styles:any=[{},{},{},{}];
+  styles:any=[{},{border: '3px solid #f24964' },{},{}];
   types:string[]=['weed','bug','fungi','warning'];
-  type: number;
+  type: number = 1;
   fieldsSelection : SelectItem[];
 
 
@@ -91,8 +91,8 @@ export class PestFormComponent implements OnInit {
     this.formdata.name = data.pestname;
     this.formdata.lat = data.field.centerLat;
     this.formdata.long = data.field.centerLong;
-    this.formdata.radius = 25;
-    this.formdata.opacity = 0.5;
+    this.formdata.radius = 2;
+    this.formdata.opacity = 0.2;
     this.formdata.gradient = 25;
     this.formdata.date = data.date;
     PestDataCollection.insert(this.formdata);
