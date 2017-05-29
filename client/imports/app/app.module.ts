@@ -31,6 +31,7 @@ import { LandingComponent } from "./components/landing/landing.component";
 import { ConsultantComponent } from "./components/consultant/consultant.component";
 import { SignupComponent } from "./components/signup/signup.component";
 import { LoginComponent } from "./components/login/login.component";
+import { ClearFieldComponent } from "./components/clearField/clear-field.component";
 import { UiSwitchModule } from 'angular2-ui-switch';
 import {DropdownModule, CalendarModule} from 'primeng/primeng';
 import { RatingModule } from 'ng2-rating';
@@ -41,6 +42,7 @@ import { AccountsModule } from 'angular2-meteor-accounts-ui';
 const appRoutes: Routes = [
   { path: 'pest/:id/suggestions', component: PestSuggestionsComponent, canActivate: ['canActivateForLoggedIn'] },
   { path: 'pest/:id', component: PestDataComponent, canActivate: ['canActivateForLoggedIn']},
+  { path: 'clearfield/:id', component: ClearFieldComponent, canActivate: ['canActivateForLoggedIn']},
 //  { path: 'spotPest', component: SpotPestComponent },  
  // { path: 'pesticide/:id', component: PesticideComponent },
   { path: 'manage', component: ManageFieldComponent, canActivate: ['canActivateForLoggedIn'] },
@@ -79,6 +81,7 @@ export const ROUTES_PROVIDERS = [{
     LoginComponent,
     NewsfeedComponent,
     PestDataComponent,
+    ClearFieldComponent,
     PestFormComponent,
     ConsultantComponent,
     SettingsComponent,

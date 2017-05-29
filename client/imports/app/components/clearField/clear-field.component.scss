@@ -1,0 +1,203 @@
+@import '../../styles/colors';
+
+#clear-field{
+width: 100%;
+height: 145vh;
+display: flex;
+top: 30px;
+position: relative;
+flex-direction: column;
+justify-content: center;
+background-color: $primary-color;
+
+
+input, .ui-inputtext{
+        padding: 5px;
+        border-radius: 3px;
+        width: 200px;
+        text-align: center;
+        font-size: 15px;
+    }
+
+h1{
+    margin:0;
+}
+
+#afterPublish{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+
+    img{
+        width: 20%;
+        align-self: center;
+        margin: 5px;
+    }
+
+    p{
+        margin: 5px;
+    }
+
+    #buttons{
+    width: 90%;
+    align-self: center;
+
+    span{
+        width: 60%;
+        display: inline-block;
+        padding: 5px;
+        background-color: $secondary-color;
+        border-radius: 5px;
+        margin: 5px;
+    a{
+        font-size: 15px;
+        width: 100%;
+        text-decoration: none;
+        color: $font-color;
+    }
+    }
+}
+
+
+
+}
+
+#afterClear{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    p{
+        margin: 5px;
+    }
+
+    .pestbox{
+        display: flex;
+        width: 100%;
+        padding: 3px;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: $secondary-color;
+
+        .pest{
+            width: 50%;
+            align-self: center;
+
+            img{
+                width: 10%;
+            }
+        }
+    }
+
+    span{
+        width: 60%;
+        display: inline-block;
+        padding: 5px;
+        background-color: $secondary-color;
+        border-radius: 5px;
+        margin: 5px;
+        align-self: center;
+    a{
+        font-size: 15px;
+        width: 100%;
+        text-decoration: none;
+        color: $font-color;
+    }
+    }
+
+    }
+
+
+#map{
+    text-align: center;
+    display: flex;
+    align-self: center;
+    align-content: center;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 30%;
+    margin: 5px;
+    margin-top: 30px;
+    border-radius: 10px;
+
+  .sebm-google-map-container {
+  height: 100%;
+  width: 100%;
+  align-self: center;
+}
+
+}
+
+#pest-form-container{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-self: center;
+    width: 90%;
+    text-align: left;
+    padding: 10px;
+
+    form{
+flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-self: center;
+    text-align: center;
+    
+
+    #pest-icons-container{
+        display: flex;
+        flex-direction: row;
+        margin: 2px;
+
+        a {
+            align-self: center;
+            text-align: center;
+
+            img{
+            width: 50%;
+        }
+    }
+
+    }
+
+    .field{
+        margin-bottom: 5px;
+        margin-top: 5px;
+        width: 100%;
+        align-self: center;
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        justify-content: center;
+
+        input{
+            align-self: center;
+        }
+
+    }
+
+    button{
+                margin: 5px;
+                background-color: $secondary-color;
+                padding: 10px;
+                border: none;
+                align-self: center;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 15px;
+                color: $font-color;
+                width: 60%
+            }
+    }
+}
+
+}

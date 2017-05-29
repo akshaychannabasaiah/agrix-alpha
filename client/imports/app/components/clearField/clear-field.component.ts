@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import template from "./record-action.component.html";
-import style from "./record-action.component.scss";
+import template from "./clear-field.component.html";
+import style from "./clear-field.component.scss";
 import { PestData } from "../../../../../both/models/pestData.model";
 import { PestDataCollection } from "../../../../../both/collections/pestData.collection";
 import { ActivatedRoute } from '@angular/router';
@@ -20,14 +20,14 @@ import { MeteorObservable } from "meteor-rxjs/dist";
 
 
 @Component({
-  selector: "record-action",
+  selector: "clear-field",
   template,
   styles: [style]
 })
 
 @InjectUser('user')
-export class RecordActionComponent implements OnInit {
-  published: boolean = false;
+export class ClearFieldComponent implements OnInit {
+  defCleared: boolean = false;
   cleared: boolean = false;
   compName: string;
   data: Observable<PestData[]>;
@@ -38,35 +38,54 @@ export class RecordActionComponent implements OnInit {
   currentFarmer: Farmer;
   pests: Observable<Pest[]>;
   processing: Boolean = false;
-  formdata: Action;
-  initdata: Action = {
-    actionType: 'Pesticide Spray',
-    cropType: '',
-    pest: '',
-    amount: undefined,
-    pesticide: '',
-    comments: '',
-    rating: undefined,
-    price: undefined,
-    date: new Date(),
-  };
   color = "#9C27B0";
   fieldData: Field[];
+  rating: number;
   icons: any = {
     'weed': '/images/weed_pin.png',
     'bug': '/images/bug_pin.png',
     'warning': '/images/warning_pin.png',
     'fungi': '/images/fungi_pin.png',
   }
+  pestData: any = [
+    {
+      name: 'Corn Weevil',
+      fieldName: 'North Field',
+      date: '29.05.2017',
+      pesticide: 'BASF Artett',
+      pesticideDate: '30.05.2017',
+      icon: 'images/1.png'
+    },
+    {
+      name: 'Army worm',
+      fieldName: 'South Field',
+      date: '29.05.2017',
+      pesticide: 'Bayer Decis Forte',
+      pesticideDate: '30.05.2017',
+      icon: 'images/2.png'
+    },
+    {
+      name: 'Aphid',
+      fieldName: 'North Field',
+      date: '29.05.2017',
+      pesticide: 'BASF Elando',
+      pesticideDate: '30.05.2017',
+      icon: 'images/3.png'
+    },
+    {
+      name: 'White Mildew',
+      fieldName: 'North Field',
+      date: '29.05.2017',
+      pesticide: 'Sygenta Durivo',
+      pesticideDate: '30.05.2017',
+      icon: 'images/2.png'
+    },
+  ]
 
-  fieldsSelection: SelectItem[];
-  pestSelection: SelectItem[];
-
-  constructor(private pestMapDataService: PestMapDataService, private pestService: PestService, public _router: Router, private farmerService: FarmerService) {
-    this.compName = "Record an Action";
-    this.formdata = this.initdata;
-    this.fieldsSelection = [];
-    this.pestSelection = [];
+  sub: any;
+  id: number;
+  constructor(private pestMapDataService: PestMapDataService, private pestService: PestService, public _router: Router, private farmerService: FarmerService, private route: ActivatedRoute) {
+    this.compName = "Clear a Field";
   }
 
   ngOnInit() {
@@ -79,50 +98,20 @@ export class RecordActionComponent implements OnInit {
         this.centerLat = this.currentFarmer.centerLat;
         this.centerLong = this.currentFarmer.centerLong;
         this.fieldData = this.currentFarmer.fields;
-        this.fieldData.map((f) => {
-          this.fieldsSelection.push({
-            label: f.name, value: f
-          });
-        });
       }
     });
 
+    this.sub = this.route.params.subscribe(params => {
+      this.id = +params['id'];
+     
+      
+    });
+
     this.pests.subscribe((pest) => {
-      pest.map((f) => {
-        this.pestSelection.push({
-          label: f.name, value: f.name
-        });
-      });
+     
     });
     this.processing = false;
   }
-
-  addSpotting(data) {
-    this.formdata.cropType = data.field.cropType;
-    this.formdata.pest = data.pest;
-    this.formdata.rating = data.rating;
-    this.formdata.amount = data.amount;
-    this.formdata.price = data.price;
-    this.formdata.comments = "";
-    this.formdata.pesticide = data.pesticide;
-    this.formdata.date = data.date;
-
-    let action: Action = {
-      actionType: this.formdata.actionType,
-      cropType: this.formdata.cropType,
-      pest: this.formdata.pest,
-      pesticide: this.formdata.pesticide,
-      date: this.formdata.date,
-      comments: this.formdata.comments,
-      amount: this.formdata.amount,
-      price: this.formdata.price,
-      rating: this.formdata.rating
-    };
-    Meteor.call("RecordActionToDB", this.user.profile.id, data.field.name, action);
-
-    this.published = true;
-  }
-
 
   clicked(type: string) {
     if (type == 'bug') {
@@ -141,10 +130,20 @@ export class RecordActionComponent implements OnInit {
 
   btnClicked(id) {
     if (id == 1) {
-      this._router.navigateByUrl('pest/' + 1 + '/suggestions');
+      this._router.navigateByUrl('pest/' + this.id + '/suggestions');
     }
     else if (id == 2) {
-      this._router.navigateByUrl('clearfield/' + 0);
+      this._router.navigateByUrl('consultant');
+    }
+    else if (id == 3) {
+      this._router.navigateByUrl('record');
+    }
+    else if (id == 4){
+      this.cleared = true;
+    }
+    else{
+      this.cleared = false;
+      this.defCleared = true;
     }
   }
 

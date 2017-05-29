@@ -28,6 +28,7 @@ export class PestFormComponent implements OnInit {
   compName: string;
   centerLat = 0;
   centerLong = 0;
+  data: Observable<PestData[]>;
   processing: Boolean = false;
   formdata: PestData;
   farmerData: Observable<Farmer[]>; 
@@ -59,13 +60,14 @@ export class PestFormComponent implements OnInit {
   fieldsSelection : SelectItem[];
 
 
-  constructor(public _router: Router, private farmerService: FarmerService) {
+  constructor(private pestMapDataService: PestMapDataService, public _router: Router, private farmerService: FarmerService) {
     this.compName = "Publish Spotting";
     this.formdata = this.initdata;
     this.fieldsSelection = [];
   }
 
   ngOnInit() {
+    this.data = this.pestMapDataService.getData().zone();
     this.farmerData = this.farmerService.getData().zone();
    
     this.farmerData.subscribe((data) => {
@@ -110,7 +112,22 @@ export class PestFormComponent implements OnInit {
     this.styles[id]=this.selectedStyle;
   }
 
-  clicked(id){
+clicked(type: string) {
+    if (type == 'bug') {
+      this._router.navigateByUrl('clearfield/' + '0');
+    }
+    else if (type == 'fungi') {
+      this._router.navigateByUrl('clearfield/' + '1');
+    }
+    else if (type == 'weed') {
+      this._router.navigateByUrl('clearfield/' + '2');
+    }
+    else {
+      this._router.navigateByUrl('clearfield/' + '3');
+    }
+  }
+
+  btnClicked(id){
     if(id == 1){
       this._router.navigateByUrl('pest/' + this.type +'/suggestions');
     }

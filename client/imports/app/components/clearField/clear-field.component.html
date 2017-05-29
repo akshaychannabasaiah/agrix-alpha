@@ -1,0 +1,53 @@
+
+<top-bar [title]="compName"></top-bar>
+
+<div id="clear-field">
+<div id="map">
+<h3 *ngIf="processing">Loading map....</h3>  
+
+<sebm-google-map [zoom]="12" [mapTypeControl]="enabled" *ngIf="!processing" [latitude]="centerLat" [longitude]="centerLong">
+    <li *ngFor="let d of fieldData">
+    <sebm-map-polygon [paths]="d.boundaries"></sebm-map-polygon>
+    </li>
+    <li *ngFor="let d of data | async">
+    <sebm-google-map-marker *ngIf="!defCleared" [latitude]="d.lat" [longitude]="d.long" iconUrl={{icons[d.type]}} (markerClick)="clicked(d.type)"></sebm-google-map-marker> 
+    </li>
+    
+</sebm-google-map>
+</div>
+
+<div *ngIf="!cleared && !defCleared" id="afterPublish">
+<img src={{pestData[id].icon}} />
+<p>{{pestData[id].name}}</p>
+<p>{{pestData[id].fieldName}}</p>
+<p>Spotted on {{pestData[id].date}}</p>
+<div id="buttons">
+<span><a (click)="btnClicked(1)">See what others did</a></span>
+<span><a (click)="btnClicked(2)">Contact consultant</a></span>
+<span><a (click)="btnClicked(3)">Record action</a></span>
+<span><a (click)="btnClicked(4)">Clear Field</a></span>
+</div>
+</div>
+
+<div *ngIf="cleared" id="afterClear">
+<p>{{pestData[id].fieldName}}</p>
+<div class="pestbox">
+  <div class="pest"><p>{{pestData[id].name}}</p></div>
+  <div class="pest"><p>{{pestData[id].pesticide}}</p></div>    
+</div>
+<div class="pestbox">
+  <div class="pest"><p>Spotted {{pestData[id].date}}</p></div>
+  <div class="pest"><p>Applied {{pestData[id].pesticideDate}}</p></div>    
+</div>
+<p>How would you rate this product?</p>
+<rating [float]="false" name="rating" [(ngModel)]="rating" [readonly]="false"></rating>
+<span><a (click)="btnClicked(5)">Clear Field</a></span>
+</div>
+
+<div *ngIf="defCleared" id="afterPublish">
+<p>Cleared Successfully!</p>
+<img src="/images/success_icon.png"/>
+</div>
+
+</div>  
+<bottom-bar></bottom-bar>

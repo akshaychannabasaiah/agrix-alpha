@@ -10,6 +10,9 @@
 <li *ngFor="let d of fieldData">
     <sebm-map-polygon [paths]="d.boundaries"></sebm-map-polygon>
 </li>
+<li *ngFor="let d of data | async">
+    <sebm-google-map-marker [latitude]="d.lat" [longitude]="d.long" iconUrl={{icons[d.type]}} (markerClick)="clicked(d.type)"></sebm-google-map-marker> 
+    </li>
 </sebm-google-map>
 </div>
 
@@ -17,8 +20,8 @@
 <p>Published Successfully!</p>
 <img src="/images/success_icon.png"/>
 <div id="buttons">
-<span><a (click)="clicked(1)">See what others did</a></span>
-<span><a (click)="clicked(2)">Contact Consultant</a></span>
+<span><a (click)="btnClicked(1)">See what others did</a></span>
+<span><a (click)="btnClicked(2)">Contact Consultant</a></span>
 </div>
 </div>
 
