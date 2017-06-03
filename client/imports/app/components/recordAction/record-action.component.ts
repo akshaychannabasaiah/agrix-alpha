@@ -140,8 +140,21 @@ export class RecordActionComponent implements OnInit {
   }
 
   btnClicked(id) {
+    let pestid = 1; 
     if (id == 1) {
-      this._router.navigateByUrl('pest/' + 1 + '/suggestions');
+      if(this.formdata.pest == "Corn Weevil"){
+        pestid = 0;
+      }
+      else if(this.formdata.pest == "Aphid"){
+        pestid = 1;
+      }
+      else if(this.formdata.pest == "Army worm"){
+        pestid = 2;
+      }
+      else {
+        pestid = 3;
+      }
+      this._router.navigateByUrl('pest/' + pestid + '/suggestions');
     }
     else if (id == 2) {
       this._router.navigateByUrl('clearfield/' + 0);

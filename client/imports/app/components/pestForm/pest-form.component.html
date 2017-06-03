@@ -12,7 +12,7 @@
 </li>
 <li *ngFor="let d of data | async">
     <sebm-google-map-marker [latitude]="d.lat" [longitude]="d.long" iconUrl={{icons[d.type]}} (markerClick)="clicked(d.type)"></sebm-google-map-marker> 
-    </li>
+</li>
 </sebm-google-map>
 </div>
 
