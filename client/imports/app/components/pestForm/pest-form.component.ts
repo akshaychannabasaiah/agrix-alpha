@@ -15,6 +15,8 @@ import { Field } from "../../../../../both/models/field.model";
 import { InjectUser } from 'angular2-meteor-accounts-ui';
 import { Observable } from "rxjs";
 
+import { Pest } from "../../../../../both/models/pest.model";
+import { PestService } from "../../services/pest.service";
 
 @Component({
   selector: "pest-form",
@@ -33,6 +35,7 @@ export class PestFormComponent implements OnInit {
   formdata: PestData;
   farmerData: Observable<Farmer[]>; 
   user: Meteor.User;
+  pests: Observable<Pest[]>;
   currentFarmer: Farmer;
   icons: any = {
     'weed': '/images/weed_pin.png',
@@ -41,6 +44,8 @@ export class PestFormComponent implements OnInit {
     'fungi': '/images/fungi_pin.png',
   }
    fieldData: Field[];
+   pestSelection: SelectItem[];
+
   initdata: PestData = {
     name:'',
     type: 'bug',
@@ -60,16 +65,17 @@ export class PestFormComponent implements OnInit {
   fieldsSelection : SelectItem[];
 
 
-  constructor(private pestMapDataService: PestMapDataService, public _router: Router, private farmerService: FarmerService) {
+  constructor(private pestMapDataService: PestMapDataService, public _router: Router, private farmerService: FarmerService, private pestService: PestService) {
     this.compName = "Publish Spotting";
     this.formdata = this.initdata;
     this.fieldsSelection = [];
+    this.pestSelection = [];
   }
 
   ngOnInit() {
     this.data = this.pestMapDataService.getData().zone();
     this.farmerData = this.farmerService.getData().zone();
-   
+    this.pests = this.pestService.getData().zone();
     this.farmerData.subscribe((data) => {
         if(this.user !== undefined ){
         this.currentFarmer = data.filter((d) => d.id === this.user.profile.id)[0];
@@ -85,6 +91,16 @@ export class PestFormComponent implements OnInit {
           this.formdata.field = this.fieldData[0]; 
         }        
     });
+
+    this.pests.subscribe((pest) => {
+      pest.map((f) => {
+        this.pestSelection.push({
+          label: f.name, value: f.name
+        });
+      });
+      this.processing = false;
+    });
+
     this.processing = false;
   
 
@@ -131,7 +147,21 @@ clicked(id: string) {
 
   btnClicked(id){
     if(id == 1){
-      this._router.navigateByUrl('pest/' + this.type +'/suggestions');
+      let pestid = 1; 
+    
+      if(this.formdata.name == "Corn Weevil"){
+        pestid = 0;
+      }
+      else if(this.formdata.name == "Aphid"){
+        pestid = 1;
+      }
+      else if(this.formdata.name == "Army worm"){
+        pestid = 2;
+      }
+      else {
+        pestid = 3;
+      }
+      this._router.navigateByUrl('pest/' + pestid + '/suggestions');
     }
     else{
       this._router.navigateByUrl('consultant');
