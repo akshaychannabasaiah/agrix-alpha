@@ -1,4 +1,5 @@
 export interface PestData {
+  _id?: string;
   name: string;
   type: string;
   lat: number;

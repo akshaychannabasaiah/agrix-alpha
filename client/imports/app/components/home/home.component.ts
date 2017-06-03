@@ -61,19 +61,19 @@ export class HomeComponent implements OnInit {
     this.processing = false;
   }
 
-  clicked(type: string){
-    if(type == 'bug'){
-      this._router.navigateByUrl('pest/' + '0');
+  clicked(id: string){
+   /* if(type == 'bug'){
+      this._router.navigateByUrl('clearfield/' + '0');
     }
     else if(type == 'fungi'){
-      this._router.navigateByUrl('pest/' + '1');
+      this._router.navigateByUrl('clearfield/' + '1');
     }
     else if(type == 'weed'){
-      this._router.navigateByUrl('pest/' + '2');
+      this._router.navigateByUrl('clearfield/' + '2');
     }
     else {
-      this._router.navigateByUrl('pest/' + '3');
-    }
-
+      this._router.navigateByUrl('clearfield/' + '3');
+    }*/
+    this._router.navigateByUrl('clearfield/' + id);
   }
 }

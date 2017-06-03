@@ -36,6 +36,7 @@ export class ClearFieldComponent implements OnInit {
   centerLat = 0;
   centerLong = 0;
   currentFarmer: Farmer;
+  currentPest: PestData;
   pests: Observable<Pest[]>;
   processing: Boolean = false;
   color = "#9C27B0";
@@ -83,7 +84,7 @@ export class ClearFieldComponent implements OnInit {
   ]
 
   sub: any;
-  id: number;
+  id: string;
   constructor(private pestMapDataService: PestMapDataService, private pestService: PestService, public _router: Router, private farmerService: FarmerService, private route: ActivatedRoute) {
     this.compName = "Clear a Field";
   }
@@ -102,15 +103,14 @@ export class ClearFieldComponent implements OnInit {
     });
 
     this.sub = this.route.params.subscribe(params => {
-      this.id = +params['id'];
-     
-      
+      this.id = params['_id'];
     });
 
-    this.pests.subscribe((pest) => {
-     
-    });
-    this.processing = false;
+    this.data.subscribe((pest) => {
+      this.currentPest = pest.filter(p => p._id === this.id)[0];
+      this.processing = false;
+  });
+    
   }
 
   clicked(type: string) {
@@ -143,6 +143,9 @@ export class ClearFieldComponent implements OnInit {
     }
     else{
       this.cleared = false;
+      PestDataCollection.remove({
+        _id: this.id
+      });
       this.defCleared = true;
     }
   }

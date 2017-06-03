@@ -42,7 +42,7 @@ import { AccountsModule } from 'angular2-meteor-accounts-ui';
 const appRoutes: Routes = [
   { path: 'pest/:id/suggestions', component: PestSuggestionsComponent, canActivate: ['canActivateForLoggedIn'] },
   { path: 'pest/:id', component: PestDataComponent, canActivate: ['canActivateForLoggedIn']},
-  { path: 'clearfield/:id', component: ClearFieldComponent, canActivate: ['canActivateForLoggedIn']},
+  { path: 'clearfield/:_id', component: ClearFieldComponent, canActivate: ['canActivateForLoggedIn']},
 //  { path: 'spotPest', component: SpotPestComponent },  
  // { path: 'pesticide/:id', component: PesticideComponent },
   { path: 'manage', component: ManageFieldComponent, canActivate: ['canActivateForLoggedIn'] },

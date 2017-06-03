@@ -10,41 +10,41 @@
     <sebm-map-polygon [paths]="d.boundaries"></sebm-map-polygon>
     </li>
     <li *ngFor="let d of data | async">
-    <sebm-google-map-marker *ngIf="!defCleared" [latitude]="d.lat" [longitude]="d.long" iconUrl={{icons[d.type]}} (markerClick)="clicked(d.type)"></sebm-google-map-marker> 
+    <sebm-google-map-marker [latitude]="d.lat" [longitude]="d.long" iconUrl={{icons[d.type]}} (markerClick)="clicked(d.type)"></sebm-google-map-marker> 
     </li>
     
 </sebm-google-map>
 </div>
 
-<div *ngIf="!cleared && !defCleared" id="afterPublish">
-<img src={{pestData[id].icon}} />
-<p>{{pestData[id].name}}</p>
-<p>{{pestData[id].fieldName}}</p>
-<p>Spotted on {{pestData[id].date}}</p>
+<div *ngIf="!cleared && !defCleared && !processing" id="afterPublish">
+<img src={{icons[currentPest.type]}} />
+<p>{{currentPest.name}}</p>
+<p>{{currentPest.field.name}}</p>
+<p>Spotted on {{currentPest.date.toDateString()}}</p>
 <div id="buttons">
 <span><a (click)="btnClicked(1)">See what others did</a></span>
 <span><a (click)="btnClicked(2)">Contact consultant</a></span>
 <span><a (click)="btnClicked(3)">Record action</a></span>
-<span><a (click)="btnClicked(4)">Clear Field</a></span>
+<span><a (click)="btnClicked(5)">Clear Field</a></span>
 </div>
 </div>
 
-<div *ngIf="cleared" id="afterClear">
-<p>{{pestData[id].fieldName}}</p>
+<!-- div *ngIf="cleared" id="afterClear">
+<p>{{currentPest.field.name}}</p>
 <div class="pestbox">
-  <div class="pest"><p>{{pestData[id].name}}</p></div>
-  <div class="pest"><p>{{pestData[id].pesticide}}</p></div>    
+  <div class="pest"><p>{{currentPest.name}}</p></div>
+  <div class="pest"><p>Nothing</p></div>    
 </div>
 <div class="pestbox">
-  <div class="pest"><p>Spotted {{pestData[id].date}}</p></div>
-  <div class="pest"><p>Applied {{pestData[id].pesticideDate}}</p></div>    
+  <div class="pest"><p>Spotted {{currentPest.date}}</p></div>
+  <div class="pest"><p>Applied nothing</p></div>    
 </div>
 <p>How would you rate this product?</p>
 <rating [float]="false" name="rating" [(ngModel)]="rating" [readonly]="false"></rating>
 <span><a (click)="btnClicked(5)">Clear Field</a></span>
-</div>
+</div -->
 
-<div *ngIf="defCleared" id="afterPublish">
+<div *ngIf="defCleared" id="afterClear">
 <p>Cleared Successfully!</p>
 <img src="/images/success_icon.png"/>
 </div>

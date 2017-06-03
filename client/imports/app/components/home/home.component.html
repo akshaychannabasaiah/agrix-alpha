@@ -7,7 +7,7 @@
 <h3 *ngIf="processing"><i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>Loading map....</h3>  
 <sebm-google-map *ngIf="!processing" [zoom]="12" [mapTypeControl]="enabled" [latitude]="centerLat" [longitude]="centerLong">
     <li *ngFor="let d of data | async">
-    <sebm-google-map-marker [latitude]="d.lat" [longitude]="d.long" iconUrl={{icons[d.type]}} (markerClick)="clicked(d.type)"></sebm-google-map-marker> 
+    <sebm-google-map-marker [latitude]="d.lat" [longitude]="d.long" iconUrl={{icons[d.type]}} (markerClick)="clicked(d._id)"></sebm-google-map-marker> 
     </li>
     <li *ngFor="let d of fieldData">
     <sebm-map-polygon [paths]="d.boundaries"></sebm-map-polygon>

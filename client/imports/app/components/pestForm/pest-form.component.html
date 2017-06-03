@@ -11,7 +11,7 @@
     <sebm-map-polygon [paths]="d.boundaries"></sebm-map-polygon>
 </li>
 <li *ngFor="let d of data | async">
-    <sebm-google-map-marker [latitude]="d.lat" [longitude]="d.long" iconUrl={{icons[d.type]}} (markerClick)="clicked(d.type)"></sebm-google-map-marker> 
+    <sebm-google-map-marker [latitude]="d.lat" [longitude]="d.long" iconUrl={{icons[d.type]}} (markerClick)="clicked(d._id)"></sebm-google-map-marker> 
 </li>
 </sebm-google-map>
 </div>

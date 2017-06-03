@@ -112,8 +112,8 @@ export class PestFormComponent implements OnInit {
     this.styles[id]=this.selectedStyle;
   }
 
-clicked(type: string) {
-    if (type == 'bug') {
+clicked(id: string) {
+   /* if (type == 'bug') {
       this._router.navigateByUrl('clearfield/' + '0');
     }
     else if (type == 'fungi') {
@@ -124,7 +124,9 @@ clicked(type: string) {
     }
     else {
       this._router.navigateByUrl('clearfield/' + '3');
-    }
+    } */
+    this._router.navigateByUrl('clearfield/' + id);
+
   }
 
   btnClicked(id){
